@@ -1,0 +1,46 @@
+import { Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+import { PiGitForkBold } from "react-icons/pi";
+import { CardTableConfig } from "src/components/card-table";
+import { StudentInfoDetail } from "src/types/student-info";
+
+const studentInfoTableConfigs: CardTableConfig<
+  StudentInfoDetail["id"],
+  StudentInfoDetail
+>[] = [
+  {
+    key: "id",
+    headerLabel: "Id",
+    type: "string",
+  },
+  {
+    key: "name",
+    headerLabel: "Tên",
+    type: "string",
+  },
+
+  // {
+  //   key: "role",
+  //   headerIcon: <PiGitForkBold size={24} />,
+  //   headerLabel: "Nhóm quyền",
+  //   type: "string",
+  //   // renderCell: (cellData) => cellData.permissions[0]?.name || "--",
+  // },
+  {
+    key: "lang",
+    headerLabel: "Lang",
+    type: "string",
+  },
+  {
+    key: "lot",
+    headerLabel: "Lot",
+    type: "string",
+  },
+  {
+    key: "status",
+    headerLabel: "Trạng thái",
+    type: "string",
+  },
+];
+
+export default studentInfoTableConfigs;

@@ -9,6 +9,8 @@ import { SideNavSection } from "./side-nav-section";
 import { NavColor } from "src/types/settings";
 import { SIDE_NAV_WIDTH } from "src/config";
 import Image from "next/image";
+import LogoSystem from "../../../../public/image/Logo_System.svg";
+import LogoSystemVertical from "../../../../public/image/Logo_System_Vertical.png";
 
 interface SideNavProps {
   color?: NavColor;
@@ -22,7 +24,7 @@ export const SideNav: FC<SideNavProps> = (props) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 h-screen bg-white rounded-[0px_24px_24px_0px] overflow-hidden border-r border-solid border-background-other-divider shadow-lg"
+      className="fixed inset-0 z-50 h-screen bg-white rounded-[0px_24px_24px_0px] overflow-hidden border-r border-solid border-background-other-divider shadow-lg "
       style={{ width: SIDE_NAV_WIDTH }}
     >
       <div
@@ -37,14 +39,14 @@ export const SideNav: FC<SideNavProps> = (props) => {
             <div className="flex flex-col items-center gap-[16px] relative self-stretch w-full flex-[0_0_auto]">
               <div className="flex flex-col items-start gap-[4px] p-[16px] relative self-stretch w-full flex-[0_0_auto] bg-tailwindcss-colors-slate-50 rounded-[16px]">
                 <Image
-                  className="relative w-[36px] h-[36px]"
+                  className="relative w-auto h-auto self-center"
                   alt="Header images 2"
-                  src={require("../../../../public/logos/schoolbus-system-logo.jpg")}
+                  src={LogoSystemVertical}
                 />
-                <p className="text-sm font-semibold">SchoolBus Systems</p>
+                {/* <p className="text-sm font-semibold">SchoolBus Systems</p> */}
               </div>
-              <h1 className="text-lg font-semibold text-primary ">
-                Hệ thống đưa đón đến trường
+              <h1 className="text-lg font-semibold text-primary text-center ">
+                Hệ thống giám sát học sinh trên xe đưa đón
               </h1>
             </div>
           </div>

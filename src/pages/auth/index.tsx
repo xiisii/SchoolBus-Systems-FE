@@ -18,7 +18,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMounted } from "src/hooks/use-mounted";
 import { FaArrowLeftLong } from "react-icons/fa6";
-
+import BackgroundDashboard from "../../../public/image/Background_Dashboard.svg";
 const Page: PageType = () => {
   const router = useRouter();
   const { signIn } = useAuth<AuthContextType>();
@@ -53,7 +53,7 @@ const Page: PageType = () => {
   return (
     <div className="h-screen flex ">
       <Image
-        src={backgroundImage}
+        src={BackgroundDashboard}
         className="flex-1 min-w-0 object-cover"
         alt="Background images"
       />
@@ -109,13 +109,13 @@ const Page: PageType = () => {
               </div>
             )}
             <button
-              className="btn btn-primary text-white w-full"
+              className="btn  bg-orange-400 text-white w-full hover:bg-orange-500"
               type="submit" // Specify the button type as "submit"
             >
               Đăng nhập
             </button>
           </form>
-          <div className="flex items-center gap-0">
+          {/* <div className="flex items-center gap-0">
             <button
               className="btn bg-none border-none  px-4 pt-1 pb-1 max-w-max h-[24px] text-xs	"
               onClick={() => handleSignUp()}
@@ -126,7 +126,7 @@ const Page: PageType = () => {
             <button className="btn bg-none border-none  px-4 pt-1 pb-1 max-w-max  h-[24px] text-xs	">
               Quên mật khẩu
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

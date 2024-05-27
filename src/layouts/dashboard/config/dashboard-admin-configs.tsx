@@ -4,11 +4,10 @@ import { IoPersonCircleOutline, IoFlag } from "react-icons/io5";
 import { paths } from "src/paths";
 import { FilesEarmarkFillIcon } from "src/components/icons/FilesEarmarkFillIcon";
 import { BsDoorOpen } from "react-icons/bs";
-import { PiChartPieBold, PiScalesBold } from "react-icons/pi";
-import { TbDeviceIpadHorizontalPlus } from "react-icons/tb";
-import { AiOutlineTransaction } from "react-icons/ai";
-import { FaFileInvoice } from "react-icons/fa";
-import { GiBuyCard } from "react-icons/gi";
+
+import { FaBus } from "react-icons/fa6";
+import { PiStudentBold } from "react-icons/pi";
+import { GiSteeringWheel } from "react-icons/gi";
 
 export const getDashboardAdminConfigs = () => {
   return [
@@ -20,12 +19,26 @@ export const getDashboardAdminConfigs = () => {
           icon: <RectangleGroupIcon className="h-6 w-6" />,
         },
 
+        // {
+        //   title: "Quản lý tài khoản",
+        //   path: paths.dashboard["quan-ly-tai-khoan"],
+        //   icon: <IoPersonCircleOutline className="h-6 w-6" />,
+        // },
         {
-          title: "Quản lý tài khoản",
-          path: paths.dashboard["quan-ly-tai-khoan"],
-          icon: <IoPersonCircleOutline className="h-6 w-6" />,
+          title: "Giám sát chuyến xe",
+          path: paths.dashboard["giam-sat-chuyen-xe"],
+          icon: <FaBus className="h-6 w-6" />,
         },
-
+        {
+          title: "Quản lý học sinh",
+          path: paths.dashboard["quan-ly-hoc-sinh"],
+          icon: <PiStudentBold className="h-6 w-6" />,
+        },
+        {
+          title: "Quản lý tài xế",
+          path: paths.dashboard["quan-ly-tai-xe"],
+          icon: <GiSteeringWheel className="h-6 w-6" />,
+        },
         {
           title: "Đăng xuất",
           path: paths.dashboard.logout,

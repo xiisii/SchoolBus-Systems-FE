@@ -16,64 +16,48 @@ import { IssuerGuard } from "src/guards/issuer-guard";
 import { GuestGuard } from "src/guards/guest-guard";
 import { Issuer } from "src/utils/auth";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import LeftImage from "../../public/logos/portrait-man-face-scann.jpg";
-import RightImage from "../../public/logos/login.png";
-import LogoImage from "../../public/logos/schoolbus-system-logo.jpg";
 
+// Import SVGs
+import LeftImageSvg from "../../public/image/Application_CheckIn.svg";
+import RightImageSvg from "../../public/image/Application_Management.svg";
+import LogoSystem from "../../public/image/Logo_System.svg";
+import HeaderSection from "src/components/header_section";
 const Page: PageType = () => {
   const router = useRouter();
-
-  const handleGoBack = () => {
-    console.log("Quay lại");
-    router.replace(paths.auth.login);
-  };
 
   const handleImageClick = (path: string) => {
     router.push(path);
   };
 
   return (
-    <div className="h-screen flex flex-col w-screen ">
-      <div
-        className="flex flex-col text-center pt-8 pb-4"
-        style={{
-          backgroundImage: `url(${backgroundImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <Image
-          src={LogoImage}
-          className="object-cover w-30 h-30 md:w-44 md:h-36 self-center cursor-pointer"
-          alt="Schoolbus System Logo"
-        />
-      </div>
+    <div className="flex flex-col min-h-screen max-w-screen">
+      <HeaderSection />
       <div className="flex flex-col text-center mt-4">
-        <h1 className="text-2xl md:text-4xl text-blue-500">
-          Chào mừng bạn đến với hệ thống quản lý xe đưa đón đến trường học
+        <h1 className="text-2xl md:text-4xl text-[#3a84ee]">
+          Hệ thống giám sát học sinh trên xe đưa đón
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row md:space-x-4 self-center items-center mt-8 md:mt-16">
-        <div className="flex flex-col items-center mb-8 md:mb-0">
-          <Image
-            src={LeftImage}
-            className="cursor-pointer object-cover w-auto md:w-1/2 lg:w-1/3 h-auto"
-            alt="Background image 2"
+      <div className="flex flex-col md:flex-row flex-grow mt-8 md:mt-16">
+        <div className="flex flex-col items-center w-full md:w-1/2 p-4">
+          <img
+            src={LeftImageSvg.src}
+            className="cursor-pointer object-cover w-1/2 h-auto md:min-w-[200px] md:max-w-[800px]"
+            alt="Ứng dụng điểm danh"
             onClick={() => handleImageClick("/face_recognition")}
           />
-          <h1 className="text-center text-xl md:text-3xl mt-2 text-blue-500">
-            Đăng ký xác thực khuôn mặt
+          <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
+            Ứng dụng điểm danh
           </h1>
         </div>
-        <div className="flex flex-col items-center">
-          <Image
-            src={RightImage}
-            className="cursor-pointer object-cover w-auto md:w-3/4 lg:w-1/2 h-auto"
-            alt="Background image 2"
+        <div className="flex flex-col items-center w-full md:w-1/2 p-4">
+          <img
+            src={RightImageSvg.src}
+            className="cursor-pointer object-cover w-1/2 h-auto md:min-w-[200px] md:max-w-[800px]"
+            alt="Phần mềm quản lý"
             onClick={() => handleImageClick("/auth")}
           />
-          <h1 className="text-center text-xl md:text-3xl mt-2 text-blue-500">
-            Đến giao diện đăng nhập
+          <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
+            Phần mềm quản lý
           </h1>
         </div>
       </div>

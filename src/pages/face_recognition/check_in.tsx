@@ -14,6 +14,7 @@ import { FaArrowLeftLong, FaCamera } from "react-icons/fa6";
 import LogoImage from "../../../public/logos/schoolbus-system-logo.jpg";
 import backgroundImage from "../../../public/logos/face-recognition.jpg";
 import { BsFillSendArrowDownFill } from "react-icons/bs";
+import HeaderSection from "src/components/header_section";
 
 const Page: PageType = () => {
   const router = useRouter();
@@ -51,22 +52,10 @@ const Page: PageType = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col ">
-      <div
-        className="flex flex-col text-center pt-8 pb-4 h-auto"
-        style={{
-          backgroundImage: `url(${backgroundImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <Image
-          src={LogoImage}
-          className="object-cover w-30  md:w-44 md:h-36 h-auto self-center cursor-pointer"
-          alt="Schoolbus System Logo"
-          onClick={() => handleGoBack()}
-        />
+      <HeaderSection />
+      <div className="flex flex-col text-center mt-4">
+        <h1 className="text-2xl md:text-4xl text-[#3a84ee]">Check In</h1>
       </div>
-
       {/* Lấy camera của máy tính ở đây */}
       <div className="relative flex flex-row flex-wrap  my-16 self-center">
         {/* Hiển thị camera */}
