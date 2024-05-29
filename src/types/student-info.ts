@@ -6,6 +6,7 @@ export interface StudentInfo {
   lang: string;
   lot: string;
   status: string;
+  bus: string;
 }
 
 export interface StudentInfoDetail extends StudentInfo {}
@@ -23,4 +24,5 @@ export const initialStudentInfo: StudentInfoDetail = {
   lot: "",
   status: "",
   name: "",
+  bus: "",
 };

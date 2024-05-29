@@ -116,8 +116,8 @@ export const DriverInfoEditDrawer = ({
                 fullWidth
                 id="car"
                 name="car"
-                label="Xe"
-                placeholder="Nhập thông tin xe tài xế"
+                label="Chuyến xe chạy"
+                placeholder="Nhập thông tin chuyến xe"
                 value={formik.values.car}
                 onChange={formik.handleChange}
                 error={formik.touched.car && !!formik.errors.car}
@@ -129,8 +129,8 @@ export const DriverInfoEditDrawer = ({
                 fullWidth
                 id="status"
                 name="status"
-                label="Trạng thái"
-                placeholder="Nhập trạng thái tài xế"
+                label="Thống tin chuyến xe"
+                placeholder="Nhập thông tin chuyến xe"
                 value={formik.values.status}
                 onChange={formik.handleChange}
                 error={formik.touched.status && !!formik.errors.status}

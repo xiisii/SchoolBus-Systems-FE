@@ -5,7 +5,7 @@ import { StudentInfo } from "src/types/student-info";
 import { User } from "src/types/user";
 import { FilterOption } from "src/utils/apply-filter";
 
-export interface StudentInfoFilter extends Pick<StudentInfo, "lang" | "name"> {}
+export interface StudentInfoFilter extends Pick<StudentInfo, "bus" | "name"> {}
 export type StudentInfoFilterConfig = FilterOption<
   StudentInfoFilter,
   StudentInfo
@@ -13,28 +13,29 @@ export type StudentInfoFilterConfig = FilterOption<
   CustomFilterItemConfig<StudentInfoFilter>;
 
 const studentInfoFilterConfigs: StudentInfoFilterConfig[] = [
-  // {
-  //   compare: "exact",
-  //   target: "station_type",
-  //   key: "station_type",
-  //   label: "Trạm",
-  //   xs: 3,
-  //   type: "select",
-  //   TextFieldProps: {
-  //     label: "Trạm",
-  //     placeholder: "Tất cả",
-  //   },
-  //   options: [
-  //     { value: "brick", label: "Trạm cân gạch" },
-  //     { value: "stone", label: "Trạm cân đá" },
-  //   ],
-  // },
+  {
+    compare: "exact",
+    target: "bus",
+    key: "bus",
+    label: "Chuyến xe",
+    xs: 4,
+    type: "select",
+    TextFieldProps: {
+      label: "Chọn chuyến xe",
+      placeholder: "Tất cả",
+    },
+    // options: [
+    //   { value: "up", label: "Có mặt trên xe" },
+    //   { value: "up_true", label: "Lên đúng xe" },
+    //   { value: "up_true_down", label: "Đã xuống trạm" },
+    // ],
+  },
   {
     compare: "partial",
     target: "name",
     key: "name",
     label: "Tìm kiếm...",
-    xs: 7,
+    xs: 8,
     type: "text",
     TextFieldProps: {
       InputProps: {

@@ -14,28 +14,28 @@ export type DriverInfoFilterConfig = FilterOption<
   CustomFilterItemConfig<DriverInfoFilter>;
 
 const driverInfoFilterConfigs: DriverInfoFilterConfig[] = [
-  {
-    compare: "exact",
-    target: "name",
-    key: "name",
-    label: "Tên",
-    xs: 3,
-    type: "select",
-    TextFieldProps: {
-      label: "Tên",
-      placeholder: "Tất cả",
-    },
-    // options: [
-    //   { value: "brick", label: "Trạm cân gạch" },
-    //   { value: "stone", label: "Trạm cân đá" },
-    // ],
-  },
+  // {
+  //   compare: "exact",
+  //   target: "name",
+  //   key: "name",
+  //   label: "Tên",
+  //   xs: 3,
+  //   type: "select",
+  //   TextFieldProps: {
+  //     label: "Tên",
+  //     placeholder: "Tất cả",
+  //   },
+  //   // options: [
+  //   //   { value: "brick", label: "Trạm cân gạch" },
+  //   //   { value: "stone", label: "Trạm cân đá" },
+  //   // ],
+  // },
   {
     compare: "partial",
     target: "name",
     key: "name",
     label: "Tìm kiếm...",
-    xs: 7,
+    xs: 12,
     type: "text",
     TextFieldProps: {
       InputProps: {

@@ -106,8 +106,8 @@ export const StudentInfoEditDrawer = ({
                 fullWidth
                 id="lang"
                 name="lang"
-                label="lang"
-                placeholder="Nhập lang của học sinh"
+                label="Vị trí nhà"
+                placeholder="Nhập vị trí nhà theo định dạng:  LAT_LNG"
                 value={formik.values.lang}
                 onChange={formik.handleChange}
                 error={formik.touched.lang && !!formik.errors.lang}
@@ -119,15 +119,15 @@ export const StudentInfoEditDrawer = ({
                 fullWidth
                 id="lot"
                 name="lot"
-                label="lot"
-                placeholder="Nhập lot của học sinh"
+                label="Chuyến xe"
+                placeholder="Nhập chuyến xe"
                 value={formik.values.lot}
                 onChange={formik.handleChange}
                 error={formik.touched.lot && !!formik.errors.lot}
                 helperText={formik.touched.lot && formik.errors.lot}
               />
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <TextField
                 fullWidth
                 id="status"
@@ -139,7 +139,7 @@ export const StudentInfoEditDrawer = ({
                 error={formik.touched.status && !!formik.errors.status}
                 helperText={formik.touched.status && formik.errors.status}
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Button
                 variant="contained"

@@ -30,18 +30,27 @@ const Page: PageType = () => {
   const sampleBusInfo: BusInfoDetail[] = [
     {
       id: "0001",
+      bus: "1",
+      locate: "180 Hoàng Văn Thụ",
       name: "Nguyễn Văn A",
       status: "Hoạt động",
+      updated_time: "none",
     },
     {
       id: "0002",
+      bus: "2",
+      locate: "22 Võ Văn Ngân",
       name: "Đinh Văn D",
       status: "Không hoạt động",
+      updated_time: "none",
     },
     {
       id: "0003",
+      bus: "3",
+      locate: "144 Phạm Văn Đồng",
       name: "Hoàng Nhật C",
       status: "Không hoạt động",
+      updated_time: "none",
     },
   ];
 
@@ -104,7 +113,7 @@ const Page: PageType = () => {
               Quản lý tất cả các chuyến xe
             </Typography>
           </Stack>
-          <div>
+          {/* <div>
             <Button
               startIcon={<PiPlus />}
               variant="contained"
@@ -113,7 +122,7 @@ const Page: PageType = () => {
             >
               Thêm chuyến xe
             </Button>
-          </div>
+          </div> */}
         </Stack>
         <CardTable
           rows={pagedRows}
@@ -134,7 +143,7 @@ const Page: PageType = () => {
             </Button>
           }
           onClickEdit={(data) => editDrawer.handleOpen(data)}
-          onClickDelete={(data) => deleteDialog.handleOpen(data)}
+          // onClickDelete={(data) => deleteDialog.handleOpen(data)}
         >
           <Stack gap={2} p={3} pb={2}>
             <Typography variant="h6">

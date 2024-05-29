@@ -54,7 +54,9 @@ const Page: PageType = () => {
     <div className="h-screen w-screen flex flex-col ">
       <HeaderSection />
       <div className="flex flex-col text-center mt-4">
-        <h1 className="text-2xl md:text-4xl text-[#3a84ee]">Check Out</h1>
+        <h1 className="text-2xl md:text-4xl text-[#3a84ee]">
+          Điểm danh xuống trạm
+        </h1>
       </div>
       {/* Lấy camera của máy tính ở đây */}
       <div className="relative flex flex-row flex-wrap  my-16 self-center">
@@ -147,25 +149,28 @@ const Page: PageType = () => {
             <div className="card bg-base-100 shadow-xl">
               <div className="card-body w-[500px] h-[450px]">
                 <h2 className="card-title text-2xl text-orange-500">
-                  Thông tin xác thực người dùng
+                  Thông tin xác thực học sinh
                 </h2>
                 <p className="text-xl">
-                  Họ và tên: <strong>Hoàng Nhật Minh</strong>
+                  Tên: <strong>Hoàng Nhật Minh</strong>
                 </p>
                 <p className="text-xl">
-                  Lớp: <strong>7A1</strong>
+                  ID: <strong>0000001</strong>
                 </p>
                 <p className="text-xl">
-                  Thời gian đăng ký: <strong>06/05/2024 - 08h05p03s</strong>
+                  Chuyến xe: <strong> A12</strong>
                 </p>
                 <p className="text-xl">
-                  Thời gian rời đi: <strong>06/05/2024 - 17h12p06s</strong>
+                  Thời gian xuống xe: <strong>06/05/2024 - 08h20p06s</strong>
                 </p>
                 <p className="text-xl">
-                  Trạng thái đăng ký: <strong>Xác nhận rời đi (Lần 2)</strong>
+                  Vị trí xuống trạm: <strong> 32 Hoàng Văn Thụ</strong>
                 </p>
                 <p className="text-xl">
-                  Các thông tin khác: <strong>Không</strong>
+                  Xác nhận: <strong>Xuống đúng trạm</strong>
+                </p>
+                <p className="text-xl">
+                  Trạng thái: <strong>Thành công</strong>
                 </p>
               </div>
             </div>

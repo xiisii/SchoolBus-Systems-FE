@@ -9,7 +9,9 @@ import { IssuerGuard } from "src/guards/issuer-guard";
 import { GuestGuard } from "src/guards/guest-guard";
 import { Issuer } from "src/utils/auth";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import CheckInOut from "../../../public/image/Check_In_Out.png";
+import CheckIn from "../../../public/image/Check_In.png";
+import CheckOut from "../../../public/image/Check_Out.png";
+
 import HeaderSection from "src/components/header_section";
 
 const Page: PageType = () => {
@@ -33,26 +35,26 @@ const Page: PageType = () => {
         </h1>
       </div>
       <div className="flex flex-col md:flex-row flex-grow mt-8 md:mt-16">
-        <div className="flex flex-col items-center w-full md:w-1/2 p-4  ">
+        <div className="flex flex-col items-center w-full md:w-1/2  ">
           <Image
-            src={CheckInOut}
-            className="cursor-pointer object-cover w-1/2 h-auto md:min-w-[200px] md:max-w-[800px]"
-            alt="Ứng dụng điểm danh"
+            src={CheckIn}
+            className="cursor-pointer object-cover  h-auto md:min-w-[200px] md:max-w-[700px]"
+            alt="CheckIn"
             onClick={() => handleImageClick(paths.face_recognition.checkin)}
           />
           <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
-            Check In
+            Điểm danh lên xe
           </h1>
         </div>
-        <div className="flex flex-col items-center w-full md:w-1/2 p-4">
+        <div className="flex flex-col items-center w-full md:w-1/2 ">
           <Image
-            src={CheckInOut}
-            className="cursor-pointer object-cover w-1/2 h-auto md:min-w-[200px] md:max-w-[800px]"
-            alt="Phần mềm quản lý"
+            src={CheckOut}
+            className="cursor-pointer object-cover h-auto md:min-w-[200px] md:max-w-[700px]"
+            alt="CheckOut"
             onClick={() => handleImageClick(paths.face_recognition.checkout)}
           />
           <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
-            Check Out
+            Điểm danh xuống trạm
           </h1>
         </div>
       </div>

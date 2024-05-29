@@ -10,7 +10,7 @@ const studentInfoTableConfigs: CardTableConfig<
 >[] = [
   {
     key: "id",
-    headerLabel: "Id",
+    headerLabel: "ID",
     type: "string",
   },
   {
@@ -18,7 +18,11 @@ const studentInfoTableConfigs: CardTableConfig<
     headerLabel: "Tên",
     type: "string",
   },
-
+  {
+    key: "bus",
+    headerLabel: "Chuyến xe",
+    type: "string",
+  },
   // {
   //   key: "role",
   //   headerIcon: <PiGitForkBold size={24} />,

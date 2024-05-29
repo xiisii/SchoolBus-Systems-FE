@@ -30,6 +30,7 @@ const Page: PageType = () => {
     {
       id: "0001",
       name: "Nguyễn Văn A",
+      bus: "1",
       lang: "None",
       lot: "None",
       status: "Hoạt động",
@@ -37,6 +38,8 @@ const Page: PageType = () => {
     {
       id: "0002",
       name: "Đinh Văn D",
+      bus: "2",
+
       lang: "None",
       lot: "None",
       status: "Không hoạt động",
@@ -44,6 +47,8 @@ const Page: PageType = () => {
     {
       id: "0003",
       name: "Hoàng Nhật C",
+      bus: "3",
+
       lang: "None",
       lot: "None",
       status: "Không hoạt động",

@@ -10,7 +10,17 @@ const busInfoTableConfigs: CardTableConfig<
 >[] = [
   {
     key: "id",
-    headerLabel: "Id",
+    headerLabel: "ID",
+    type: "string",
+  },
+  {
+    key: "bus",
+    headerLabel: "Chuyến xe",
+    type: "string",
+  },
+  {
+    key: "locate",
+    headerLabel: "Vị trí",
     type: "string",
   },
   {
@@ -21,6 +31,11 @@ const busInfoTableConfigs: CardTableConfig<
   {
     key: "status",
     headerLabel: "Trạng thái",
+    type: "string",
+  },
+  {
+    key: "updated_time",
+    headerLabel: "Thời gian",
     type: "string",
   },
 ];
