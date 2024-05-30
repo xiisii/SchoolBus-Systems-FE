@@ -8,11 +8,11 @@ const busInfoTableConfigs: CardTableConfig<
   BusInfoDetail["id"],
   BusInfoDetail
 >[] = [
-  {
-    key: "id",
-    headerLabel: "ID",
-    type: "string",
-  },
+  // {
+  //   key: "id",
+  //   headerLabel: "ID",
+  //   type: "string",
+  // },
   {
     key: "bus",
     headerLabel: "Chuyến xe",

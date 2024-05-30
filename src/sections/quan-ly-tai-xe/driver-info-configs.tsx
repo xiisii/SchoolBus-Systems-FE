@@ -8,11 +8,11 @@ const driverInfoTableConfigs: CardTableConfig<
   DriverInfoDetail["id"],
   DriverInfoDetail
 >[] = [
-  {
-    key: "id",
-    headerLabel: "Id",
-    type: "string",
-  },
+  // {
+  //   key: "id",
+  //   headerLabel: "ID",
+  //   type: "string",
+  // },
   {
     key: "name",
     headerLabel: "Tên",
@@ -33,7 +33,7 @@ const driverInfoTableConfigs: CardTableConfig<
   },
   {
     key: "car",
-    headerLabel: "Xe sử dụng",
+    headerLabel: "Chuyến xe",
     type: "string",
   },
   {

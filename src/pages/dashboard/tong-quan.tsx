@@ -29,14 +29,14 @@ const Page: PageType = () => {
                     <div className="absolute inset-0 border border-black m-10" /> */}
 
                     <div className="text-center">
-                      <h1 className="text-lg font-bold">
+                      <h1 className="text-xs font-bold">
                         BỘ GIÁO DỤC VÀ ĐÀO TẠO
                       </h1>
-                      <h1 className="text-lg font-bold">
+                      <h1 className="text-xs font-bold">
                         TRƯỜNG ĐẠI HỌC SƯ PHẠM KĨ THUẬT THÀNH PHỐ HỒ CHÍ MINH
                       </h1>
-                      <h1 className="text-lg font-bold">KHOA ĐIỆN - ĐIỆN TỬ</h1>
-                      <h1 className="text-lg font-bold">
+                      <h1 className="text-xs font-bold">KHOA ĐIỆN - ĐIỆN TỬ</h1>
+                      <h1 className="text-xs font-bold">
                         NGÀNH HỆ THỐNG NHÚNG VÀ IOT
                       </h1>
                     </div>
@@ -45,37 +45,37 @@ const Page: PageType = () => {
                       <Image
                         src={LogoHCMUTE}
                         alt="HCMUTE Logo"
-                        width={120}
-                        height={120}
+                        width={60}
+                        height={60}
                       />
                     </div>
 
                     <div className="text-center mt-4">
-                      <h2 className="text-3xl font-bold">ĐỒ ÁN TỐT NGHIỆP</h2>
+                      <h2 className="text-2xl font-bold">ĐỒ ÁN TỐT NGHIỆP</h2>
 
-                      <h3 className="mt-4 text-2xl font-bold">
+                      <h3 className="mt-4 text-xl font-bold">
                         THIẾT KẾ HỆ THỐNG GIÁM SÁT HỌC SINH <br />
                         TRÊN XE ĐƯA ĐÓN
                       </h3>
                     </div>
                     <br />
                     <br />
-                    <table className="mt-8">
+                    <table className="mt-1">
                       <tbody>
                         <tr>
-                          <td className="text-left font-semibold text-xl">
+                          <td className="text-left font-semibold text-xs">
                             GVHD:&nbsp;&nbsp;&nbsp; ThS. TRƯƠNG QUANG PHÚC
                           </td>
                         </tr>
 
                         <tr>
-                          <td className="text-left font-semibold text-xl">
+                          <td className="text-left font-semibold text-xs">
                             SVTH:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NGUYỄN ĐẶNG MAI
                             THY
                           </td>
                         </tr>
                         <tr>
-                          <td className="text-left font-semibold text-xl">
+                          <td className="text-left font-semibold text-xs">
                             MSSV:&nbsp;&nbsp;&nbsp;&nbsp;20139039
                           </td>
                         </tr>
@@ -92,7 +92,7 @@ const Page: PageType = () => {
                 <div className="bg-white ">
                   {/* Your content */}
                   <Image
-                    src={StudentInfo}
+                    src={BackgroundDashboard}
                     alt="Image 1"
                     className="w-auto h-auto"
                   />{" "}
@@ -108,19 +108,15 @@ const Page: PageType = () => {
               <div className="rounded-lg overflow-hidden ">
                 <div className="bg-white">
                   {/* Your content */}
-                  <Image
-                    src={BackgroundDashboard}
-                    alt="Image 3"
-                    className="w-auto"
-                  />
+                  <Image src={StudentInfo} alt="Image 3" className="w-auto" />
                 </div>
               </div>
             </Grid>
             {/* Cột 4 */}
             <Grid item xs={12} sm={6}>
-              <div className="rounded-lg overflow-hidden shadow-lg h-full">
+              <div className="rounded-lg overflow-hidden h-full">
                 <div className="bg-white p-6">
-                  <div className="relative flex flex-col items-center justify-center h-auto bg-white">
+                  <div className="relative flex flex-col items-center justify-center h-auto">
                     <h6 className="mt-4 text-lg font-normal text-justify">
                       Đề tài &quot;
                       <strong>

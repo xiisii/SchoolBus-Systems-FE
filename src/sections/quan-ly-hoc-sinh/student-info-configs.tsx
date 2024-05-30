@@ -8,11 +8,11 @@ const studentInfoTableConfigs: CardTableConfig<
   StudentInfoDetail["id"],
   StudentInfoDetail
 >[] = [
-  {
-    key: "id",
-    headerLabel: "ID",
-    type: "string",
-  },
+  // {
+  //   key: "id",
+  //   headerLabel: "ID",
+  //   type: "string",
+  // },
   {
     key: "name",
     headerLabel: "Tên",

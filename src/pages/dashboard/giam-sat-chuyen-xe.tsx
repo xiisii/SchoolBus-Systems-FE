@@ -52,6 +52,22 @@ const Page: PageType = () => {
       status: "Không hoạt động",
       updated_time: "none",
     },
+    {
+      id: "0004",
+      bus: "4",
+      locate: "144 Phạm Văn Đồng",
+      name: "Hoàng Nhật C",
+      status: "Không hoạt động",
+      updated_time: "none",
+    },
+    {
+      id: "0005",
+      bus: "5",
+      locate: "144 Phạm Văn Đồng",
+      name: "Hoàng Nhật C",
+      status: "Không hoạt động",
+      updated_time: "none",
+    },
   ];
 
   const busInfo = useMemo(() => sampleBusInfo, []);

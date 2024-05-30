@@ -20,14 +20,14 @@ export const TenantSwitch: FC<TenantSwitchProps> = (props) => {
       <Stack alignItems="center" direction="row" spacing={2} {...props}>
         <Box sx={{ flexGrow: 1 }}>
           <Typography color="inherit" variant="h6">
-            M&C Bình Dương
+            SchoolBus Systems
           </Typography>
           <Typography
             color="neutral.400"
             variant="body2"
             sx={{ fontSize: "11px", fontWeight: 500, lineHeight: 1.2 }}
           >
-            Phần mềm quản lý trạm cân
+            Phần mềm quản lý học sinh trên xe đưa đón
           </Typography>
         </Box>
         {/* <IconButton
