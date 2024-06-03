@@ -31,18 +31,8 @@ const studentInfoTableConfigs: CardTableConfig<
   //   // renderCell: (cellData) => cellData.permissions[0]?.name || "--",
   // },
   {
-    key: "lang",
-    headerLabel: "Lang",
-    type: "string",
-  },
-  {
-    key: "lot",
-    headerLabel: "Lot",
-    type: "string",
-  },
-  {
-    key: "status",
-    headerLabel: "Trạng thái",
+    key: "locate",
+    headerLabel: "Vị trí",
     type: "string",
   },
 ];

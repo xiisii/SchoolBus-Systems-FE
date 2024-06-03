@@ -22,11 +22,11 @@ const busInfoFilterConfigs: BusInfoFilterConfig[] = [
       label: "Chọn chuyến xe",
       placeholder: "Tất cả",
     },
-    // options: [
-    //   { value: "up", label: "Có mặt trên xe" },
-    //   { value: "up_true", label: "Lên đúng xe" },
-    //   { value: "up_true_down", label: "Đã xuống trạm" },
-    // ],
+    options: [
+      { value: "1", label: "Chuyến xe 1" },
+      { value: "2", label: "Chuyến xe 2" },
+      { value: "3", label: "Chuyến xe 3" },
+    ],
   },
   {
     compare: "exact",
@@ -40,9 +40,9 @@ const busInfoFilterConfigs: BusInfoFilterConfig[] = [
       placeholder: "Tất cả",
     },
     options: [
-      { value: "up", label: "Có mặt trên xe" },
-      { value: "up_true", label: "Lên đúng xe" },
-      { value: "up_true_down", label: "Đã xuống trạm" },
+      { value: "true", label: "Có mặt trên xe" },
+      { value: "up-wrong", label: "Chưa lên xe" },
+      { value: "down-true", label: "Đã xuống trạm" },
     ],
   },
   {

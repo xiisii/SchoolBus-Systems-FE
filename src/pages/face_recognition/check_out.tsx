@@ -135,7 +135,7 @@ const Page: PageType = () => {
                   <strong>(hình mũi tên)</strong> để chụp lại ảnh
                   <br />
                   <strong>3.2</strong> Nhấn gửi <strong>(hình tam giác)</strong>{" "}
-                  để xác nhận đăng ký ảnh
+                  để xác nhận gửi ảnh
                 </p>
                 <p className="text-xl">
                   <strong>Bước 4</strong>: Kiểm tra trạng thái đăng ký xác thực
@@ -152,25 +152,26 @@ const Page: PageType = () => {
                   Thông tin xác thực học sinh
                 </h2>
                 <p className="text-xl">
-                  Tên: <strong>Hoàng Nhật Minh</strong>
+                  <br />
+                  Tên: <strong>None</strong>
+                  <br />
+                  <br />
+                  Chuyến xe: <strong> None</strong>
+                  <br />
+                  <br />
+                  Vị trí xuống trạm: <strong>None</strong>
+                  <br />
+                  <br />
+                  Xác nhận: <strong>None</strong>
+                  <br />
+                  <br />
+                  Thời gian xuống xe: <strong>None</strong>
+                  <br />
+                  <br />
+                  Trạng thái: <strong>None</strong>
                 </p>
-                <p className="text-xl">
-                  ID: <strong>0000001</strong>
-                </p>
-                <p className="text-xl">
-                  Chuyến xe: <strong> A12</strong>
-                </p>
-                <p className="text-xl">
-                  Thời gian xuống xe: <strong>06/05/2024 - 08h20p06s</strong>
-                </p>
-                <p className="text-xl">
-                  Vị trí xuống trạm: <strong> 32 Hoàng Văn Thụ</strong>
-                </p>
-                <p className="text-xl">
-                  Xác nhận: <strong>Xuống đúng trạm</strong>
-                </p>
-                <p className="text-xl">
-                  Trạng thái: <strong>Thành công</strong>
+                <p className="text-xl text-center text-red-500">
+                <strong>Điểm danh xuống trạm KHÔNG thành công</strong>
                 </p>
               </div>
             </div>

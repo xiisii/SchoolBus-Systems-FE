@@ -104,27 +104,27 @@ export const StudentInfoEditDrawer = ({
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                id="lang"
-                name="lang"
+                id="locate"
+                name="locate"
                 label="Vị trí nhà"
                 placeholder="Nhập vị trí nhà theo định dạng:  LAT_LNG"
-                value={formik.values.lang}
+                value={formik.values.locate}
                 onChange={formik.handleChange}
-                error={formik.touched.lang && !!formik.errors.lang}
-                helperText={formik.touched.lang && formik.errors.lang}
+                error={formik.touched.locate && !!formik.errors.locate}
+                helperText={formik.touched.locate && formik.errors.locate}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                id="lot"
-                name="lot"
+                id="bus"
+                name="bus"
                 label="Chuyến xe"
                 placeholder="Nhập chuyến xe"
-                value={formik.values.lot}
+                value={formik.values.bus}
                 onChange={formik.handleChange}
-                error={formik.touched.lot && !!formik.errors.lot}
-                helperText={formik.touched.lot && formik.errors.lot}
+                error={formik.touched.bus && !!formik.errors.bus}
+                helperText={formik.touched.bus && formik.errors.bus}
               />
             </Grid>
             {/* <Grid item xs={12}>

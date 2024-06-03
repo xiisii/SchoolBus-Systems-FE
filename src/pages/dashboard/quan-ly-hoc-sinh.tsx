@@ -29,29 +29,38 @@ const Page: PageType = () => {
   const sampleStudentInfo: StudentInfoDetail[] = [
     {
       id: "0001",
-      name: "Nguyễn Văn A",
       bus: "1",
-      lang: "None",
-      lot: "None",
-      status: "Hoạt động",
+      locate: "10.952648_106.816997",
+      name: "Nguyen Dang Mai Thy",
+      status: "Có mặt trên xe",
     },
     {
       id: "0002",
-      name: "Đinh Văn D",
-      bus: "2",
-
-      lang: "None",
-      lot: "None",
-      status: "Không hoạt động",
+      bus: "1",
+      locate: "10.855654_106.631087",
+      name: "Bui Thi Thanh Ngan",
+      status: "Chưa lên xe",
     },
     {
       id: "0003",
-      name: "Hoàng Nhật C",
-      bus: "3",
-
-      lang: "None",
-      lot: "None",
-      status: "Không hoạt động",
+      bus: "1",
+      locate: "10.850570_106.772055",
+      name: "Nguyen Quoc Viet",
+      status: "Đã xuống trạm",
+    },
+    {
+      id: "0004",
+      bus: "2",
+      locate: "10.840788_106.808897",
+      name: "Huynh Thien Nhan",
+      status: "Chưa lên xe",
+    },
+    {
+      id: "0005",
+      bus: "2",
+      locate: "10.770358_106.679110",
+      name: "Tran Ninh Hoang",
+      status: "Có mặt trên xe",
     },
     // Thêm dữ liệu mẫu khác nếu cần
   ];

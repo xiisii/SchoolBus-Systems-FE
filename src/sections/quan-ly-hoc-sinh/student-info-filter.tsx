@@ -24,11 +24,11 @@ const studentInfoFilterConfigs: StudentInfoFilterConfig[] = [
       label: "Chọn chuyến xe",
       placeholder: "Tất cả",
     },
-    // options: [
-    //   { value: "up", label: "Có mặt trên xe" },
-    //   { value: "up_true", label: "Lên đúng xe" },
-    //   { value: "up_true_down", label: "Đã xuống trạm" },
-    // ],
+    options: [
+      { value: "1", label: "Chuyến xe 1" },
+      { value: "2", label: "Chuyến xe 2" },
+      { value: "3", label: "Chuyến xe 3" },
+    ],
   },
   {
     compare: "partial",

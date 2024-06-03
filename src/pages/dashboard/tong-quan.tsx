@@ -117,7 +117,7 @@ const Page: PageType = () => {
               <div className="rounded-lg overflow-hidden h-full">
                 <div className="bg-white p-6">
                   <div className="relative flex flex-col items-center justify-center h-auto">
-                    <h6 className="mt-4 text-lg font-normal text-justify">
+                    <h6 className="mt-4 text-x font-normal text-justify">
                       Đề tài &quot;
                       <strong>
                         Thiết kế hệ thống giám sát học sinh trên xe đưa đón

@@ -30,23 +30,23 @@ const Page: PageType = () => {
     // Thay đổi từ sampleStudentInfo thành sampleDriverInfo
     {
       id: "0001",
-      name: "Nguyễn Văn A",
+      name: "Phung Duc Hai",
       phone: "0123456789",
-      car: "Toyota",
+      car: "1",
       status: "Hoạt động",
     },
     {
       id: "0002",
-      name: "Đinh Văn D",
+      name: "Dinh Van Tung",
       phone: "0987654321",
-      car: "Honda",
+      car: "3",
       status: "Không hoạt động",
     },
     {
       id: "0003",
-      name: "Hoàng Nhật C",
-      phone: "0123456789",
-      car: "Ford",
+      name: "Hoang Nhat Minh",
+      phone: "0365789456",
+      car: "2",
       status: "Không hoạt động",
     },
   ];
