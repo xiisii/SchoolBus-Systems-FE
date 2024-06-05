@@ -200,7 +200,7 @@ const Page: PageType = () => {
   //   initMap();
   // }, []);
 
-  const isMobile = useMediaQuery("(max-width:768px)");
+  const isMobile = useMediaQuery("(max-width:1024px)");
 
   return (
     <Stack direction={isMobile ? "column-reverse" : "row"} height="100%">

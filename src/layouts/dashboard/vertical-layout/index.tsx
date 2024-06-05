@@ -16,7 +16,7 @@ interface VerticalLayoutProps {
 const VerticalLayout: FC<VerticalLayoutProps> = (props) => {
   const { children, sections, navColor } = props;
   const [isSideNavVisible, setSideNavVisible] = useState(true);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   const handleToggleSideNav = useCallback(() => {
     setSideNavVisible((prevVisible) => !prevVisible);
