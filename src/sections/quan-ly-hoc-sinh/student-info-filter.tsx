@@ -1,5 +1,6 @@
 import { Search } from "@mui/icons-material";
 import { InputAdornment } from "@mui/material";
+import { useMemo } from "react";
 import { CustomFilterItemConfig } from "src/components/custom-filter";
 import { StudentInfo } from "src/types/student-info";
 import { User } from "src/types/user";
@@ -12,41 +13,56 @@ export type StudentInfoFilterConfig = FilterOption<
 > &
   CustomFilterItemConfig<StudentInfoFilter>;
 
-const studentInfoFilterConfigs: StudentInfoFilterConfig[] = [
-  {
-    compare: "exact",
-    target: "bus",
-    key: "bus",
-    label: "Chuyến xe",
-    xs: 4,
-    type: "select",
-    TextFieldProps: {
-      label: "Chọn chuyến xe",
-      placeholder: "Tất cả",
-    },
-    options: [
-      { value: "1", label: "Chuyến xe 1" },
-      { value: "2", label: "Chuyến xe 2" },
-      { value: "3", label: "Chuyến xe 3" },
-    ],
-  },
-  {
-    compare: "partial",
-    target: "name",
-    key: "name",
-    label: "Tìm kiếm...",
-    xs: 8,
-    type: "text",
-    TextFieldProps: {
-      InputProps: {
-        startAdornment: (
-          <InputAdornment position="start">
-            <Search />
-          </InputAdornment>
-        ),
-      },
-    },
-  },
-];
+const getStudentInfoFilterConfigs = (
+  studentInfoData: StudentInfo[]
+): StudentInfoFilterConfig[] => {
+  const busOptions = Array.from(
+    new Set(studentInfoData.map((item) => item.bus))
+  ).map((bus) => ({
+    value: bus,
+    label: `Chuyến xe ${bus}`,
+  }));
 
-export default studentInfoFilterConfigs;
+  const nameOptions = Array.from(
+    new Set(studentInfoData.map((item) => item.name))
+  ).map((name) => ({
+    value: name,
+    label: name,
+  }));
+
+  return [
+    {
+      compare: "exact",
+      target: "bus",
+      key: "bus",
+      label: "Chuyến xe",
+      xs: 4,
+      type: "select",
+      TextFieldProps: {
+        label: "Chọn chuyến xe",
+        placeholder: "Tất cả",
+      },
+      options: busOptions,
+    },
+    {
+      compare: "partial",
+      target: "name",
+      key: "name",
+      label: "Tìm kiếm...",
+      xs: 8,
+      type: "text",
+      TextFieldProps: {
+        InputProps: {
+          startAdornment: (
+            <InputAdornment position="start">
+              <Search />
+            </InputAdornment>
+          ),
+        },
+      },
+      options: nameOptions,
+    },
+  ];
+};
+
+export default getStudentInfoFilterConfigs;

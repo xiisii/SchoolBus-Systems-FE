@@ -8,7 +8,7 @@ import { useDrawer } from "src/hooks/use-drawer";
 import usePagination from "src/hooks/use-pagination";
 import { useSelection } from "src/hooks/use-selection";
 import { Layout as DashboardLayout } from "src/layouts/dashboard";
-import driverInfoFilterConfigs, {
+import {
   DriverInfoFilter, // Thay đổi từ StudentInfoFilter thành DriverInfoFilter
 } from "src/sections/quan-ly-tai-xe/driver-info-filter"; // Thay đổi từ student-info-filter thành driver-info-filter
 import type { Page as PageType } from "src/types/page";
@@ -21,6 +21,7 @@ import { CardTable } from "src/components/card-table";
 import TitleConfirmRemoveDialog from "src/sections/title-confirm-remove-dialog";
 import { Delete } from "@mui/icons-material";
 import { DriverInfoEditDrawer } from "src/sections/quan-ly-tai-xe/driver-info-edit-drawer";
+import getDriverInfoFilterConfigs from "src/sections/quan-ly-tai-xe/driver-info-filter";
 
 const Page: PageType = () => {
   const editDrawer = useDrawer<DriverInfoDetail>(); // Thay đổi từ StudentInfoDetail thành DriverInfoDetail
@@ -56,8 +57,14 @@ const Page: PageType = () => {
   //     applyFilter(getDriverInfoApi.data || [], filter, driverInfoFilterConfigs),
   //   [filter, getDriverInfoApi.data]
   // );
-  const driverInfo = useMemo(() => sampleDriverInfo, []); // Sử dụng dữ liệu mẫu
-
+  // const driverInfo = useMemo(() => sampleDriverInfo, []); // Sử dụng dữ liệu mẫu
+  const driverInfoFilterConfigs = useMemo(
+    () => getDriverInfoFilterConfigs(sampleDriverInfo),
+    []
+  );
+  const driverInfo = useMemo(() => {
+    return applyFilter(sampleDriverInfo, filter, driverInfoFilterConfigs);
+  }, [driverInfoFilterConfigs, filter]);
   const pagination = usePagination({ count: driverInfo.length });
   const pagedRows = useMemo(
     () =>

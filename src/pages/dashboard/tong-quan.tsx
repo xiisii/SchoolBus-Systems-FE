@@ -14,7 +14,7 @@ import LogoHCMUTE from "public/image/logo-hcmute.svg";
 const Page: PageType = () => {
   return (
     <>
-      <div className="w-auto md:max-h-full max-h-screen overflow-y-hidden h-auto pb-2">
+      <div className="w-auto md:max-h-full  overflow-y-hidden h-auto pb-2">
         <Grid container spacing={2} className="overflow-y-hidden">
           {/* Hàng 1 */}
           <Grid container item xs={12}>

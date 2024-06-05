@@ -21,6 +21,7 @@ import { CardTable } from "src/components/card-table";
 import TitleConfirmRemoveDialog from "src/sections/title-confirm-remove-dialog";
 import { Delete } from "@mui/icons-material";
 import { StudentInfoEditDrawer } from "src/sections/quan-ly-hoc-sinh/student-info-edit-drawer";
+import getStudentInfoFilterConfigs from "src/sections/quan-ly-hoc-sinh/student-info-filter";
 
 const Page: PageType = () => {
   const editDrawer = useDrawer<StudentInfoDetail>();
@@ -73,8 +74,14 @@ const Page: PageType = () => {
   //     ),
   //   [filter, getStudentInfoApi.data]
   // );
-  const studentInfo = useMemo(() => sampleStudentInfo, []);
-
+  // const studentInfo = useMemo(() => sampleStudentInfo, []);
+  const studentInfoFilterConfigs = useMemo(
+    () => getStudentInfoFilterConfigs(sampleStudentInfo),
+    []
+  );
+  const studentInfo = useMemo(() => {
+    return applyFilter(sampleStudentInfo, filter, studentInfoFilterConfigs);
+  }, [studentInfoFilterConfigs, filter]);
   const pagination = usePagination({ count: studentInfo.length });
   const pagedRows = useMemo(
     () =>
@@ -93,78 +100,80 @@ const Page: PageType = () => {
 
   return (
     <>
-      <Stack gap={4} py={4} px={2}>
-        <Stack direction="row" justifyContent="space-between">
-          <Stack gap={1}>
-            <Typography variant="h4">Quản lý học sinh</Typography>
-            <Typography variant="body2" color="text.secondary">
-              Quản lý dữ liệu tất cả học sinh
-            </Typography>
+      <div className="h-full">
+        <Stack gap={4} py={4} px={2}>
+          <Stack direction="row" justifyContent="space-between">
+            <Stack gap={1}>
+              <Typography variant="h4">Quản lý học sinh</Typography>
+              <Typography variant="body2" color="text.secondary">
+                Quản lý dữ liệu tất cả học sinh
+              </Typography>
+            </Stack>
+            <div>
+              <Button
+                startIcon={<PiPlus />}
+                variant="contained"
+                className=" text-white bg-[#0284c7]"
+                onClick={() => editDrawer.handleOpen()}
+              >
+                Thêm học sinh
+              </Button>
+            </div>
           </Stack>
-          <div>
-            <Button
-              startIcon={<PiPlus />}
-              variant="contained"
-              className=" text-white bg-[#0284c7]"
-              onClick={() => editDrawer.handleOpen()}
-            >
-              Thêm học sinh
-            </Button>
-          </div>
+          <CardTable
+            rows={pagedRows}
+            configs={studentInfoTableConfigs}
+            select={select}
+            pagination={pagination}
+            indexColumn
+            actions={
+              <Button
+                variant="contained"
+                color="error"
+                startIcon={<Delete />}
+                size="small"
+                disabled={select.selected.length == 0}
+                onClick={() => deleteDialog.handleOpen()}
+              >
+                Xoá ({select.selected.length})
+              </Button>
+            }
+            onClickEdit={(data) => editDrawer.handleOpen(data)}
+            onClickDelete={(data) => deleteDialog.handleOpen(data)}
+          >
+            <Stack gap={2} p={3} pb={2}>
+              <Typography variant="h6">
+                {"Danh sách học sinh: " + pagedRows.length}
+              </Typography>
+              <CustomFilter
+                configs={studentInfoFilterConfigs}
+                filter={filter}
+                onChange={setFilter}
+              />
+            </Stack>
+          </CardTable>
         </Stack>
-        <CardTable
-          rows={pagedRows}
-          configs={studentInfoTableConfigs}
-          select={select}
-          pagination={pagination}
-          indexColumn
-          actions={
-            <Button
-              variant="contained"
-              color="error"
-              startIcon={<Delete />}
-              size="small"
-              disabled={select.selected.length == 0}
-              onClick={() => deleteDialog.handleOpen()}
-            >
-              Xoá ({select.selected.length})
-            </Button>
-          }
-          onClickEdit={(data) => editDrawer.handleOpen(data)}
-          onClickDelete={(data) => deleteDialog.handleOpen(data)}
-        >
-          <Stack gap={2} p={3} pb={2}>
-            <Typography variant="h6">
-              {"Danh sách học sinh: " + pagedRows.length}
-            </Typography>
-            <CustomFilter
-              configs={studentInfoFilterConfigs}
-              filter={filter}
-              onChange={setFilter}
-            />
-          </Stack>
-        </CardTable>
-      </Stack>
-      <StudentInfoEditDrawer
-        student={editDrawer.data}
-        open={editDrawer.open}
-        onClose={editDrawer.handleClose}
-      />
-      <TitleConfirmRemoveDialog
-        open={deleteDialog.open}
-        titleText="Xóa học sinh"
-        content="Xác nhận xóa học sinh này?"
-        onClose={deleteDialog.handleClose}
-        // onConfirm={async () => {
-        //   if (deleteDialog.data) {
-        //     await deleteSaleShift([Number(deleteDialog.data?.id)]);
-        //     select.handleDeselectOne(deleteDialog.data);
-        //   } else {
-        //     await deleteSaleShift(select.selected.map((s) => s.id));
-        //     select.handleDeselectAll();
-        //   }
-        // }}
-      />
+        <StudentInfoEditDrawer
+          student={editDrawer.data}
+          open={editDrawer.open}
+          onClose={editDrawer.handleClose}
+        />
+        <TitleConfirmRemoveDialog
+          open={deleteDialog.open}
+          titleText="Xóa học sinh"
+          content="Xác nhận xóa học sinh này?"
+          onClose={deleteDialog.handleClose}
+          // onConfirm={async () => {
+          //   if (deleteDialog.data) {
+          //     await deleteSaleShift([Number(deleteDialog.data?.id)]);
+          //     select.handleDeselectOne(deleteDialog.data);
+          //   } else {
+          //     await deleteSaleShift(select.selected.map((s) => s.id));
+          //     select.handleDeselectAll();
+          //   }
+          // }}
+        />
+      </div>
     </>
   );
 };

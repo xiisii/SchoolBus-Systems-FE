@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useBusInfoContext } from "src/contexts/bus-info/bus-info-context";
@@ -22,6 +22,7 @@ import TitleConfirmRemoveDialog from "src/sections/title-confirm-remove-dialog";
 import { Delete } from "@mui/icons-material";
 import { BusInfoEditDrawer } from "src/sections/giam-sat-chuyen-xe/bus-info-edit-drawer";
 import { Loader } from "@googlemaps/js-api-loader";
+import getBusInfoFilterConfigs from "src/sections/giam-sat-chuyen-xe/bus-info-filter";
 
 const Page: PageType = () => {
   const editDrawer = useDrawer<BusInfoDetail>();
@@ -69,9 +70,14 @@ const Page: PageType = () => {
       updated_time: "16:25",
     },
   ];
-
-  const busInfo = useMemo(() => sampleBusInfo, []);
-
+  const busInfoFilterConfigs = useMemo(
+    () => getBusInfoFilterConfigs(sampleBusInfo),
+    []
+  );
+  // const busInfo = useMemo(() => sampleBusInfo, []);
+  const busInfo = useMemo(() => {
+    return applyFilter(sampleBusInfo, filter, busInfoFilterConfigs);
+  }, [busInfoFilterConfigs, filter]);
   const pagination = usePagination({ count: busInfo.length });
   const pagedRows = useMemo(
     () =>
@@ -119,9 +125,11 @@ const Page: PageType = () => {
     initMap();
   }, []);
 
+  const isMobile = useMediaQuery("(max-width:768px)");
+
   return (
-    <Stack direction="row" height="100vh">
-      <Stack flex={1} gap={4} py={4} px={2}>
+    <Stack direction={isMobile ? "column-reverse" : "row"} height="100%">
+      <Stack flex={isMobile ? 1 : 0.5} gap={4} py={4} px={2}>
         <Stack direction="row" justifyContent="space-between">
           <Stack gap={1}>
             <Typography variant="h4">Giám sát chuyến xe</Typography>
@@ -129,7 +137,7 @@ const Page: PageType = () => {
               Quản lý tất cả các chuyến xe
             </Typography>
           </Stack>
-          {/* <div>
+          <div>
             <Button
               startIcon={<PiPlus />}
               variant="contained"
@@ -138,7 +146,7 @@ const Page: PageType = () => {
             >
               Thêm chuyến xe
             </Button>
-          </div> */}
+          </div>
         </Stack>
         <CardTable
           rows={pagedRows}
@@ -173,7 +181,10 @@ const Page: PageType = () => {
           </Stack>
         </CardTable>
       </Stack>
-      <div ref={mapRef} style={{ flex: 1, height: "100%" }} />
+      <div
+        ref={mapRef}
+        style={{ flex: isMobile ? 1 : 0.5, height: "100%" }}
+      ></div>
       <BusInfoEditDrawer
         busInfo={editDrawer.data}
         open={editDrawer.open}
