@@ -166,7 +166,7 @@ const Page: PageType = () => {
                   Trạng thái: <strong>None</strong>
                 </p>
                 <p className="text-xl text-center text-red-500">
-                <strong>Điểm danh lên xe KHÔNG thành công</strong>
+                  <strong>Điểm danh lên xe KHÔNG thành công</strong>
                 </p>
               </div>
             </div>

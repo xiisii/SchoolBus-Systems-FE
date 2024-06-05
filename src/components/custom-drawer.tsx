@@ -87,11 +87,21 @@ function CustomDrawer({
               }}
             >
               {onCancel && (
-                <Button color="inherit" variant="contained" onClick={onCancel}>
+                <Button
+                  color="inherit"
+                  variant="contained"
+                  onClick={onCancel}
+                  className=" text-white bg-[#0284c7]"
+                >
                   {cancelText || "Hủy bỏ"}
                 </Button>
               )}
-              <Button variant="contained" color="primary" onClick={onSubmit}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onSubmit}
+                className=" text-white bg-[#0284c7]"
+              >
                 {submitText || "Xác nhận"}
               </Button>
             </Box>

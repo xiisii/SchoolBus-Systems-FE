@@ -47,6 +47,7 @@ function TitleConfirmRemoveDialog({
             }
           }}
           disabled={onConfirmHelper.loading}
+          className=" text-white bg-[#cd3333]"
         >
           Xoá dữ liệu
         </Button>

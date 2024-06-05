@@ -27,30 +27,59 @@ const Page: PageType = () => {
   const editDrawer = useDrawer<DriverInfoDetail>(); // Thay đổi từ StudentInfoDetail thành DriverInfoDetail
   const [filter, setFilter] = useState<Partial<DriverInfoFilter>>({}); // Thay đổi từ StudentInfoFilter thành DriverInfoFilter
   const { deleteDriverInfo, getDriverInfoApi } = useDriverInfoContext(); // Thay đổi từ useStudentInfoContext thành useDriverInfoContext
-  const sampleDriverInfo: DriverInfoDetail[] = [
-    // Thay đổi từ sampleStudentInfo thành sampleDriverInfo
-    {
-      id: "0001",
-      name: "Phung Duc Hai",
-      phone: "0123456789",
-      car: "1",
-      status: "Hoạt động",
-    },
-    {
-      id: "0002",
-      name: "Dinh Van Tung",
-      phone: "0987654321",
-      car: "3",
-      status: "Không hoạt động",
-    },
-    {
-      id: "0003",
-      name: "Hoang Nhat Minh",
-      phone: "0365789456",
-      car: "2",
-      status: "Không hoạt động",
-    },
-  ];
+  const [sampleDriverInfo, setSampleDriverInfo] = useState<DriverInfoDetail[]>(
+    []
+  );
+  useEffect(() => {
+    // fetch or set sampleStudentInfo here
+    setSampleDriverInfo([
+      {
+        id: "0001",
+        name: "Phung Duc Hai",
+        phone: "0123456789",
+        car: "1",
+        status: "Hoạt động",
+      },
+      {
+        id: "0002",
+        name: "Dinh Van Tung",
+        phone: "0987654321",
+        car: "3",
+        status: "Không hoạt động",
+      },
+      {
+        id: "0003",
+        name: "Hoang Nhat Minh",
+        phone: "0365789456",
+        car: "2",
+        status: "Không hoạt động",
+      },
+    ]);
+  }, []);
+  // const sampleDriverInfo: DriverInfoDetail[] = [
+  //   // Thay đổi từ sampleStudentInfo thành sampleDriverInfo
+  //   {
+  //     id: "0001",
+  //     name: "Phung Duc Hai",
+  //     phone: "0123456789",
+  //     car: "1",
+  //     status: "Hoạt động",
+  //   },
+  //   {
+  //     id: "0002",
+  //     name: "Dinh Van Tung",
+  //     phone: "0987654321",
+  //     car: "3",
+  //     status: "Không hoạt động",
+  //   },
+  //   {
+  //     id: "0003",
+  //     name: "Hoang Nhat Minh",
+  //     phone: "0365789456",
+  //     car: "2",
+  //     status: "Không hoạt động",
+  //   },
+  // ];
   // const sampleDriverInfo = useMemo(
   //   // Bỏ comment khi sử dụng dữ liệu từ API
   //   () =>
@@ -60,11 +89,11 @@ const Page: PageType = () => {
   // const driverInfo = useMemo(() => sampleDriverInfo, []); // Sử dụng dữ liệu mẫu
   const driverInfoFilterConfigs = useMemo(
     () => getDriverInfoFilterConfigs(sampleDriverInfo),
-    []
+    [sampleDriverInfo]
   );
   const driverInfo = useMemo(() => {
     return applyFilter(sampleDriverInfo, filter, driverInfoFilterConfigs);
-  }, [driverInfoFilterConfigs, filter]);
+  }, [driverInfoFilterConfigs, filter, sampleDriverInfo]);
   const pagination = usePagination({ count: driverInfo.length });
   const pagedRows = useMemo(
     () =>
@@ -80,7 +109,12 @@ const Page: PageType = () => {
 
   const router = useRouter();
   // Dữ liệu mẫu của tài xế
-
+  const deleteSelectedDrivers = (selectedStudents: any) => {
+    const updatedSampleDriverInfo = sampleDriverInfo.filter(
+      (driver) => !selectedStudents.includes(driver)
+    );
+    setSampleDriverInfo(updatedSampleDriverInfo);
+  };
   return (
     <>
       <Stack gap={4} py={4} px={2}>
@@ -145,15 +179,22 @@ const Page: PageType = () => {
         titleText="Xóa tài xế"
         content="Xác nhận xóa tài xế này?"
         onClose={deleteDialog.handleClose}
-        // onConfirm={async () => {
-        //   if (deleteDialog.data) {
-        //     await deleteSaleShift([Number(deleteDialog.data?.id)]);
-        //     select.handleDeselectOne(deleteDialog.data);
-        //   } else {
-        //     await deleteSaleShift(select.selected.map((s) => s.id));
-        //     select.handleDeselectAll();
-        //   }
-        // }}
+        onConfirm={async () => {
+          if (deleteDialog.data) {
+            // await deleteSaleShift([Number(deleteDialog.data?.id)]);
+            const updatedSampleDriverInfo = sampleDriverInfo.filter(
+              (driver) => driver.id !== deleteDialog.data?.id
+            );
+            setSampleDriverInfo(updatedSampleDriverInfo);
+            select.handleDeselectOne(deleteDialog.data);
+          } else {
+            // await deleteSaleShift(select.selected.map((s) => s.id));
+            // console.log(select.selected);
+            deleteSelectedDrivers(select.selected);
+
+            select.handleDeselectAll();
+          }
+        }}
       />
     </>
   );

@@ -27,44 +27,87 @@ const Page: PageType = () => {
   const editDrawer = useDrawer<StudentInfoDetail>();
   const [filter, setFilter] = useState<Partial<StudentInfoFilter>>({});
   const { deleteStudentInfo, getStudentInfoApi } = useStudentInfoContext();
-  const sampleStudentInfo: StudentInfoDetail[] = [
-    {
-      id: "0001",
-      bus: "1",
-      locate: "10.952648_106.816997",
-      name: "Nguyen Dang Mai Thy",
-      status: "Có mặt trên xe",
-    },
-    {
-      id: "0002",
-      bus: "1",
-      locate: "10.855654_106.631087",
-      name: "Bui Thi Thanh Ngan",
-      status: "Chưa lên xe",
-    },
-    {
-      id: "0003",
-      bus: "1",
-      locate: "10.850570_106.772055",
-      name: "Nguyen Quoc Viet",
-      status: "Đã xuống trạm",
-    },
-    {
-      id: "0004",
-      bus: "2",
-      locate: "10.840788_106.808897",
-      name: "Huynh Thien Nhan",
-      status: "Chưa lên xe",
-    },
-    {
-      id: "0005",
-      bus: "2",
-      locate: "10.770358_106.679110",
-      name: "Tran Ninh Hoang",
-      status: "Có mặt trên xe",
-    },
-    // Thêm dữ liệu mẫu khác nếu cần
-  ];
+  const [sampleStudentInfo, setSampleStudentInfo] = useState<
+    StudentInfoDetail[]
+  >([]);
+  useEffect(() => {
+    // fetch or set sampleStudentInfo here
+    setSampleStudentInfo([
+      {
+        id: "0001",
+        bus: "1",
+        locate: "10.952648_106.816997",
+        name: "Nguyen Dang Mai Thy",
+        status: "Có mặt trên xe",
+      },
+      {
+        id: "0002",
+        bus: "1",
+        locate: "10.855654_106.631087",
+        name: "Bui Thi Thanh Ngan",
+        status: "Chưa lên xe",
+      },
+      {
+        id: "0003",
+        bus: "1",
+        locate: "10.850570_106.772055",
+        name: "Nguyen Quoc Viet",
+        status: "Đã xuống trạm",
+      },
+      {
+        id: "0004",
+        bus: "2",
+        locate: "10.840788_106.808897",
+        name: "Huynh Thien Nhan",
+        status: "Chưa lên xe",
+      },
+      {
+        id: "0005",
+        bus: "2",
+        locate: "10.770358_106.679110",
+        name: "Tran Ninh Hoang",
+        status: "Có mặt trên xe",
+      },
+    ]);
+  }, []);
+  // const sampleStudentInfo: StudentInfoDetail[] = [
+  //   {
+  //     id: "0001",
+  //     bus: "1",
+  //     locate: "10.952648_106.816997",
+  //     name: "Nguyen Dang Mai Thy",
+  //     status: "Có mặt trên xe",
+  //   },
+  //   {
+  //     id: "0002",
+  //     bus: "1",
+  //     locate: "10.855654_106.631087",
+  //     name: "Bui Thi Thanh Ngan",
+  //     status: "Chưa lên xe",
+  //   },
+  //   {
+  //     id: "0003",
+  //     bus: "1",
+  //     locate: "10.850570_106.772055",
+  //     name: "Nguyen Quoc Viet",
+  //     status: "Đã xuống trạm",
+  //   },
+  //   {
+  //     id: "0004",
+  //     bus: "2",
+  //     locate: "10.840788_106.808897",
+  //     name: "Huynh Thien Nhan",
+  //     status: "Chưa lên xe",
+  //   },
+  //   {
+  //     id: "0005",
+  //     bus: "2",
+  //     locate: "10.770358_106.679110",
+  //     name: "Tran Ninh Hoang",
+  //     status: "Có mặt trên xe",
+  //   },
+  //   // Thêm dữ liệu mẫu khác nếu cần
+  // ];
   // const studentInfo = useMemo(
   //   () =>
   //     applyFilter(
@@ -75,13 +118,14 @@ const Page: PageType = () => {
   //   [filter, getStudentInfoApi.data]
   // );
   // const studentInfo = useMemo(() => sampleStudentInfo, []);
+
   const studentInfoFilterConfigs = useMemo(
     () => getStudentInfoFilterConfigs(sampleStudentInfo),
-    []
+    [sampleStudentInfo]
   );
   const studentInfo = useMemo(() => {
     return applyFilter(sampleStudentInfo, filter, studentInfoFilterConfigs);
-  }, [studentInfoFilterConfigs, filter]);
+  }, [studentInfoFilterConfigs, filter, sampleStudentInfo]);
   const pagination = usePagination({ count: studentInfo.length });
   const pagedRows = useMemo(
     () =>
@@ -97,7 +141,12 @@ const Page: PageType = () => {
 
   const router = useRouter();
   // Dữ liệu mẫu của học sinh
-
+  const deleteSelectedStudents = (selectedStudents: any) => {
+    const updatedSampleStudentInfo = sampleStudentInfo.filter(
+      (student) => !selectedStudents.includes(student)
+    );
+    setSampleStudentInfo(updatedSampleStudentInfo);
+  };
   return (
     <>
       <div className="h-full">
@@ -163,15 +212,22 @@ const Page: PageType = () => {
           titleText="Xóa học sinh"
           content="Xác nhận xóa học sinh này?"
           onClose={deleteDialog.handleClose}
-          // onConfirm={async () => {
-          //   if (deleteDialog.data) {
-          //     await deleteSaleShift([Number(deleteDialog.data?.id)]);
-          //     select.handleDeselectOne(deleteDialog.data);
-          //   } else {
-          //     await deleteSaleShift(select.selected.map((s) => s.id));
-          //     select.handleDeselectAll();
-          //   }
-          // }}
+          onConfirm={async () => {
+            if (deleteDialog.data) {
+              // await deleteSaleShift([Number(deleteDialog.data?.id)]);
+              const updatedSampleStudentInfo = sampleStudentInfo.filter(
+                (student) => student.id !== deleteDialog.data?.id
+              );
+              setSampleStudentInfo(updatedSampleStudentInfo);
+              select.handleDeselectOne(deleteDialog.data);
+            } else {
+              // await deleteSaleShift(select.selected.map((s) => s.id));
+              // console.log(select.selected);
+              deleteSelectedStudents(select.selected);
+
+              select.handleDeselectAll();
+            }
+          }}
         />
       </div>
     </>
