@@ -27,7 +27,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-shadow.png";
-import Map from "src/components/MapComponents/MapComponent";
+import Map from "src/components/LeafMap/MapComponent";
 const Page: PageType = () => {
   const editDrawer = useDrawer<BusInfoDetail>();
   const [filter, setFilter] = useState<Partial<BusInfoFilter>>({});
@@ -260,7 +260,7 @@ const Page: PageType = () => {
         ref={mapRef}
         style={{ flex: isMobile ? 1 : 0.5, height: "100%" }}
       ></div> */}
-      <div style={{ flex: isMobile ? 1 : 0.5, height: "100%" }}>
+      <div style={{ flex: isMobile ? 1 : 0.5 }}>
         <Map />
       </div>
       <BusInfoEditDrawer

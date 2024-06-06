@@ -22,7 +22,7 @@ export const SideNav: FC<SideNavProps> = (props) => {
   const pathname = usePathname();
 
   return (
-    <div className="fixed inset-0 z-50 h-screen bg-white rounded-[0px_24px_24px_0px] overflow-hidden border-r border-solid border-background-other-divider shadow-lg lg:w-[280px] md:w-[220px] w-[210px]">
+    <div className="fixed inset-0 z-50 h-full bg-white rounded-[0px_24px_24px_0px] overflow-hidden border-r border-solid border-background-other-divider shadow-lg lg:w-[280px] md:w-[220px] w-[210px]">
       <div
         className="flex flex-col flex-shrink-0 w-full bg-gray-900 overflow-y-auto h-full"
         style={{

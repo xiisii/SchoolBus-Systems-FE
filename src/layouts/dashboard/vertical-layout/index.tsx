@@ -40,7 +40,7 @@ const VerticalLayout: FC<VerticalLayoutProps> = (props) => {
         />
       )}
       <div
-        className={`flex-1 flex flex-col max-w-full transition-all duration-300`}
+        className={`flex-1 flex flex-col max-w-full  transition-all duration-300`}
         style={{
           paddingLeft: isSideNavVisible && !isMobile ? SIDE_NAV_WIDTH : 0,
         }}
