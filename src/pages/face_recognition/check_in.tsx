@@ -69,6 +69,11 @@ const Page: PageType = () => {
           Điểm danh lên xe
         </h1>
       </div>
+      <ToastContainer
+        autoClose={2000}
+        position="top-center"
+        className="mt-[220px]"
+      />
       {/* Lấy camera của máy tính ở đây */}
       <div className="relative flex flex-row flex-wrap  my-16 self-center">
         {/* Hiển thị camera */}
@@ -184,7 +189,6 @@ const Page: PageType = () => {
           </div>
         )}
       </div>
-      <ToastContainer autoClose={2000} />
     </div>
   );
 };
