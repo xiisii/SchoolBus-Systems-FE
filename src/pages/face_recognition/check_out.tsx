@@ -15,6 +15,9 @@ import LogoImage from "../../../public/logos/schoolbus-system-logo.jpg";
 import backgroundImage from "../../../public/logos/face-recognition.jpg";
 import { BsFillSendArrowDownFill } from "react-icons/bs";
 import HeaderSection from "src/components/header_section";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const Page: PageType = () => {
   const router = useRouter();
@@ -49,7 +52,9 @@ const Page: PageType = () => {
       setCapturedImage(imageSrc);
     }
   };
-
+  useEffect(() => {
+    toast.warn("Bạn cần tải ảnh lên");
+  }, []);
   return (
     <div className="h-screen w-screen flex flex-col ">
       <HeaderSection />
@@ -171,13 +176,14 @@ const Page: PageType = () => {
                   Trạng thái: <strong>None</strong>
                 </p>
                 <p className="text-xl text-center text-red-500">
-                <strong>Điểm danh xuống trạm KHÔNG thành công</strong>
+                  <strong>Điểm danh xuống trạm KHÔNG thành công</strong>
                 </p>
               </div>
             </div>
           </div>
         )}
       </div>
+      <ToastContainer autoClose={2000} />
     </div>
   );
 };

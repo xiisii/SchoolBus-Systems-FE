@@ -15,10 +15,16 @@ import LogoImage from "../../../public/logos/schoolbus-system-logo.jpg";
 import backgroundImage from "../../../public/logos/face-recognition.jpg";
 import { BsFillSendArrowDownFill } from "react-icons/bs";
 import HeaderSection from "src/components/header_section";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 const Page: PageType = () => {
   const router = useRouter();
-
+  // const notifyWarning = () => {
+  //   // console.log("Vào warning notify");
+  //   toast.warn("Bạn cần tải ảnh lên");
+  // };
   const handleGoBack = () => {
     console.log("Quay lại");
     router.replace(paths.index);
@@ -42,6 +48,7 @@ const Page: PageType = () => {
   };
   const handleRegister = () => {
     setRegister(!register);
+    // notifyWarning();
   };
   const captureImage = () => {
     if (webcamRef.current) {
@@ -49,6 +56,10 @@ const Page: PageType = () => {
       setCapturedImage(imageSrc);
     }
   };
+
+  useEffect(() => {
+    toast.warn("Bạn cần tải ảnh lên");
+  }, []);
 
   return (
     <div className="h-screen w-screen flex flex-col ">
@@ -173,6 +184,7 @@ const Page: PageType = () => {
           </div>
         )}
       </div>
+      <ToastContainer autoClose={2000} />
     </div>
   );
 };
