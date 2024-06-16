@@ -46,13 +46,12 @@ const Page: PageType = () => {
   };
 
   return (
-    <div className="h-screen  flex  md:flex-col lg:flex-row md:h-full lg:h-screen">
-      <div className="relative flex-1 hidden md:block  ">
+    <div className="h-screen  flex  md:flex-col lg:flex-row md:h-[1300px] lg:h-screen overflow-y-auto">
+      <div className="relative hidden md:block   ">
         <Image
           src={BackgroundDashboard}
-          layout="fill"
-          objectFit="cover"
           alt="Background images"
+          className="md:w-full md:h-[400px] lg:h-full lg:w-full h-full w-full  object-cover "
         />
       </div>
 

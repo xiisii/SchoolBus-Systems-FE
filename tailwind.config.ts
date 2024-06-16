@@ -94,6 +94,9 @@ const config: Config = {
           "accordion-up": "accordion-up 0.2s ease-out",
         },
       },
+      backgroundImage: {
+        "background-image": "url('/public/image/Background_Dashboard.svg')",
+      },
     },
   },
 };
