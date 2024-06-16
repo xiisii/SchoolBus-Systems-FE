@@ -6,7 +6,7 @@ import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-shadow.png";
 const Map = () => (
   <MapContainer
-    className="w-full h-full"
+    className="w-full h-full  lg:w-full lg:h-full md:mx-20 lg:mx-0 z-0"
     center={[10.874243, 106.7948193]}
     zoom={13}
   >

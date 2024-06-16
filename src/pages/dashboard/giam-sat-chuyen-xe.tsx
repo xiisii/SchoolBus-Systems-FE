@@ -28,6 +28,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-shadow.png";
 import Map from "src/components/LeafMap/MapComponent";
+import NoSSRWrapper from "src/hocs/no-ssr-wrapper";
 const Page: PageType = () => {
   const editDrawer = useDrawer<BusInfoDetail>();
   const [filter, setFilter] = useState<Partial<BusInfoFilter>>({});
@@ -203,94 +204,101 @@ const Page: PageType = () => {
   const isMobile = useMediaQuery("(max-width:1024px)");
 
   return (
-    <Stack direction={isMobile ? "column-reverse" : "row"} height="100%">
-      <Stack flex={isMobile ? 1 : 0.5} gap={4} py={4} px={2}>
-        <Stack direction="row" justifyContent="space-between">
-          <Stack gap={1}>
-            <Typography variant="h4">Giám sát chuyến xe</Typography>
-            <Typography variant="body2" color="text.secondary">
-              Quản lý tất cả các chuyến xe
-            </Typography>
-          </Stack>
-          <div>
-            <Button
-              startIcon={<PiPlus />}
-              variant="contained"
-              className="text-white bg-[#0284c7]"
-              onClick={() => editDrawer.handleOpen()}
+    <>
+      <div className="md:h-[1800px] lg:h-screen h-screen">
+        <Stack direction={isMobile ? "column-reverse" : "row"} height="100%">
+          <Stack flex={isMobile ? 1 : 0.5} gap={4} py={4} px={2}>
+            <Stack direction="row" justifyContent="space-between">
+              <Stack gap={1}>
+                <Typography variant="h4">Giám sát chuyến xe</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Quản lý tất cả các chuyến xe
+                </Typography>
+              </Stack>
+              <div>
+                <Button
+                  startIcon={<PiPlus />}
+                  variant="contained"
+                  className="text-white bg-[#0284c7]"
+                  onClick={() => editDrawer.handleOpen()}
+                >
+                  Thêm chuyến xe
+                </Button>
+              </div>
+            </Stack>
+            <CardTable
+              rows={pagedRows}
+              configs={busInfoTableConfigs}
+              select={select}
+              pagination={pagination}
+              indexColumn
+              actions={
+                <Button
+                  variant="contained"
+                  color="error"
+                  startIcon={<Delete />}
+                  size="small"
+                  disabled={select.selected.length == 0}
+                  onClick={() => deleteDialog.handleOpen()}
+                >
+                  Xoá ({select.selected.length})
+                </Button>
+              }
+              onClickEdit={(data) => editDrawer.handleOpen(data)}
+              onClickDelete={(data) => deleteDialog.handleOpen(data)}
             >
-              Thêm chuyến xe
-            </Button>
-          </div>
-        </Stack>
-        <CardTable
-          rows={pagedRows}
-          configs={busInfoTableConfigs}
-          select={select}
-          pagination={pagination}
-          indexColumn
-          actions={
-            <Button
-              variant="contained"
-              color="error"
-              startIcon={<Delete />}
-              size="small"
-              disabled={select.selected.length == 0}
-              onClick={() => deleteDialog.handleOpen()}
-            >
-              Xoá ({select.selected.length})
-            </Button>
-          }
-          onClickEdit={(data) => editDrawer.handleOpen(data)}
-          onClickDelete={(data) => deleteDialog.handleOpen(data)}
-        >
-          <Stack gap={2} p={3} pb={2}>
-            <Typography variant="h6">
-              {"Danh sách chuyến: " + pagedRows.length}
-            </Typography>
-            <CustomFilter
-              configs={busInfoFilterConfigs}
-              filter={filter}
-              onChange={setFilter}
-            />
+              <Stack gap={2} p={3} pb={2}>
+                <Typography variant="h6">
+                  {"Danh sách chuyến: " + pagedRows.length}
+                </Typography>
+                <CustomFilter
+                  configs={busInfoFilterConfigs}
+                  filter={filter}
+                  onChange={setFilter}
+                />
+              </Stack>
+            </CardTable>
           </Stack>
-        </CardTable>
-      </Stack>
-      {/* <div
+          {/* <div
         ref={mapRef}
         style={{ flex: isMobile ? 1 : 0.5, height: "100%" }}
       ></div> */}
-      <div style={{ flex: isMobile ? 1 : 0.5 }}>
-        <Map />
-      </div>
-      <BusInfoEditDrawer
-        busInfo={editDrawer.data}
-        open={editDrawer.open}
-        onClose={editDrawer.handleClose}
-      />
-      <TitleConfirmRemoveDialog
-        open={deleteDialog.open}
-        titleText="Xóa chuyến này"
-        content="Xác nhận xóa chuyến xe này?"
-        onClose={deleteDialog.handleClose}
-        onConfirm={async () => {
-          if (deleteDialog.data) {
-            // await deleteSaleShift([Number(deleteDialog.data?.id)]);
-            console.log(deleteDialog.data);
-            const updatedSampleBusInfo = sampleBusInfo.filter(
-              (busInfo) => busInfo.id !== deleteDialog.data?.id
-            );
-            setSampleBusInfo(updatedSampleBusInfo);
-            select.handleDeselectOne(deleteDialog.data);
-          } else {
-            // await deleteSaleShift(select.selected.map((s) => s.id));
-            deleteSelectedBusInfo(select.selected);
 
-            select.handleDeselectAll();
-          }
-        }}
-      />
-    </Stack>
+          <BusInfoEditDrawer
+            busInfo={editDrawer.data}
+            open={editDrawer.open}
+            onClose={editDrawer.handleClose}
+          />
+          <TitleConfirmRemoveDialog
+            open={deleteDialog.open}
+            titleText="Xóa chuyến này"
+            content="Xác nhận xóa chuyến xe này?"
+            onClose={deleteDialog.handleClose}
+            onConfirm={async () => {
+              if (deleteDialog.data) {
+                // await deleteSaleShift([Number(deleteDialog.data?.id)]);
+                console.log(deleteDialog.data);
+                const updatedSampleBusInfo = sampleBusInfo.filter(
+                  (busInfo) => busInfo.id !== deleteDialog.data?.id
+                );
+                setSampleBusInfo(updatedSampleBusInfo);
+                select.handleDeselectOne(deleteDialog.data);
+              } else {
+                // await deleteSaleShift(select.selected.map((s) => s.id));
+                deleteSelectedBusInfo(select.selected);
+
+                select.handleDeselectAll();
+              }
+            }}
+          />
+          <div style={{ flex: isMobile ? 0.5 : 0.5 }}>
+            <NoSSRWrapper>
+              <Map />
+            </NoSSRWrapper>
+          </div>
+        </Stack>
+      </div>
+    </>
   );
 };
 

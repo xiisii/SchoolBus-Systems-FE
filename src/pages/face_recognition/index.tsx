@@ -29,31 +29,32 @@ const Page: PageType = () => {
   return (
     <div className="flex flex-col min-h-screen max-w-screen">
       <HeaderSection />
+
       <div className="flex flex-col text-center mt-4">
         <h1 className="text-2xl md:text-4xl text-[#3a84ee]">
           Ứng dụng điểm danh học sinh bằng khuôn mặt
         </h1>
       </div>
-      <div className="flex flex-col md:flex-row flex-grow mt-8 md:mt-16">
-        <div className="flex flex-col items-center w-full md:w-1/2  ">
+      <div className="flex flex-col md:flex-row flex-grow mt-8 md:mt-16 lg:mt-8">
+        <div className="flex flex-col items-center w-full md:w-1/2 p-4 ">
           <Image
             src={CheckIn}
-            className="cursor-pointer object-cover  h-auto md:min-w-[200px] md:max-w-[700px]"
+            className="cursor-pointer object-cover w-1/2  h-auto md:w-full lg:w-auto"
             alt="CheckIn"
             onClick={() => handleImageClick(paths.face_recognition.checkin)}
           />
-          <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
+          <h1 className="text-center text-xl md:text-3xl  text-[#df9717]">
             Điểm danh lên xe
           </h1>
         </div>
-        <div className="flex flex-col items-center w-full md:w-1/2 ">
+        <div className="flex flex-col items-center w-full md:w-1/2 p-4">
           <Image
             src={CheckOut}
-            className="cursor-pointer object-cover h-auto md:min-w-[200px] md:max-w-[700px]"
+            className="cursor-pointer object-cover w-1/2 h-auto md:w-full lg:w-auto"
             alt="CheckOut"
             onClick={() => handleImageClick(paths.face_recognition.checkout)}
           />
-          <h1 className="text-center text-xl md:text-3xl mt-2 text-[#df9717]">
+          <h1 className="text-center text-xl md:text-3xl  text-[#df9717]">
             Điểm danh xuống trạm
           </h1>
         </div>

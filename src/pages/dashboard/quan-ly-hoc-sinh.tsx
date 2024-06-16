@@ -149,7 +149,7 @@ const Page: PageType = () => {
   };
   return (
     <>
-      <div className="h-full">
+      <div className="h-full md:h-[1100px] lg:h-full">
         <Stack gap={4} py={4} px={2}>
           <Stack direction="row" justifyContent="space-between">
             <Stack gap={1}>

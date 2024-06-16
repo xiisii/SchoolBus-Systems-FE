@@ -56,8 +56,9 @@ const Page: PageType = () => {
     toast.warn("Bạn cần tải ảnh lên");
   }, []);
   return (
-    <div className="h-screen w-screen flex flex-col ">
+    <div className="h-screen w-screen md:h-full md:w-full lg:h-screen lg:w-screen flex flex-col ">
       <HeaderSection />
+
       <div className="flex flex-col text-center mt-4">
         <h1 className="text-2xl md:text-4xl text-[#3a84ee]">
           Điểm danh xuống trạm
@@ -69,7 +70,7 @@ const Page: PageType = () => {
         className="mt-[220px]"
       />
       {/* Lấy camera của máy tính ở đây */}
-      <div className="relative flex flex-row flex-wrap  my-16 self-center">
+      <div className="relative flex flex-row flex-wrap  lg:my-16 md:my-0 self-center md:mx-4 lg:mx-0">
         {/* Hiển thị camera */}
         <div className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 max-xl:1/2 h-auto relative mb-4 md:mb-0 self-center">
           <Webcam
@@ -132,13 +133,13 @@ const Page: PageType = () => {
             <div className="card bg-base-100 shadow-xl">
               <div className="card-body">
                 <h2 className="card-title">Hướng dẫn</h2>
-                <p className="text-xl">
+                <p className="text-xl md:text-lg lg:text-xl">
                   <strong>Bước 1</strong>: Nhìn thẳng vào camera trên màn hình
                 </p>
-                <p className="text-xl">
+                <p className="text-xl md:text-lg lg:text-xl">
                   <strong>Bước 2</strong>: Nhấn nút chụp màn hình ở dưới camera
                 </p>
-                <p className="text-xl">
+                <p className="text-xl md:text-lg lg:text-xl">
                   <strong>Bước 3</strong>: Lựa chọn phương thức điều hướng:
                   <br />
                   <strong>3.1</strong> Nhấn quay lại{" "}
@@ -147,7 +148,7 @@ const Page: PageType = () => {
                   <strong>3.2</strong> Nhấn gửi <strong>(hình tam giác)</strong>{" "}
                   để xác nhận gửi ảnh
                 </p>
-                <p className="text-xl">
+                <p className="text-xl md:text-lg lg:text-xl">
                   <strong>Bước 4</strong>: Kiểm tra trạng thái đăng ký xác thực
                   khuôn mặt
                 </p>
@@ -155,32 +156,32 @@ const Page: PageType = () => {
             </div>
           </div>
         ) : (
-          <div className="flex w-full md:w-1/2 lg:w-1/2 xl:w-1/2 p-4 h-full self-center">
+          <div className="flex w-auto md:w-1/2 lg:w-1/2 xl:w-1/2 p-4 h-full self-center overflow-y-auto">
             <div className="card bg-base-100 shadow-xl">
-              <div className="card-body w-[500px] h-[450px]">
-                <h2 className="card-title text-2xl text-orange-500">
+              <div className="card-body w-[500px] h-[450px] md:w-auto md:h-auto lg:h-[450px] lg:w-[500px]">
+                <h2 className="card-title text-2xl text-orange-500 md:text-lg lg:text-2xl">
                   Thông tin xác thực học sinh
                 </h2>
-                <p className="text-xl">
-                  <br />
+                <p className="text-xl md:text-lg lg:text-xl"></p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Tên: <strong>None</strong>
-                  <br />
-                  <br />
+                </p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Chuyến xe: <strong> None</strong>
-                  <br />
-                  <br />
+                </p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Vị trí xuống trạm: <strong>None</strong>
-                  <br />
-                  <br />
+                </p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Xác nhận: <strong>None</strong>
-                  <br />
-                  <br />
+                </p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Thời gian xuống xe: <strong>None</strong>
-                  <br />
-                  <br />
+                </p>
+                <p className="text-xl md:text-lg lg:text-xl">
                   Trạng thái: <strong>None</strong>
                 </p>
-                <p className="text-xl text-center text-red-500">
+                <p className="text-xl text-center text-red-500 md:text-lg lg:text-xl">
                   <strong>Điểm danh xuống trạm KHÔNG thành công</strong>
                 </p>
               </div>

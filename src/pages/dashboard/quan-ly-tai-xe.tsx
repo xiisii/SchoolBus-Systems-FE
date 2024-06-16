@@ -117,58 +117,61 @@ const Page: PageType = () => {
   };
   return (
     <>
-      <Stack gap={4} py={4} px={2}>
-        <Stack direction="row" justifyContent="space-between">
-          <Stack gap={1}>
-            <Typography variant="h4">Quản lý tài xế</Typography>
-            <Typography variant="body2" color="text.secondary">
-              Quản lý dữ liệu tất cả tài xế
-            </Typography>
+      <div className=" md:h-screen lg:h-screen h-screen">
+        <Stack gap={4} py={4} px={2}>
+          <Stack direction="row" justifyContent="space-between">
+            <Stack gap={1}>
+              <Typography variant="h4">Quản lý tài xế</Typography>
+              <Typography variant="body2" color="text.secondary">
+                Quản lý dữ liệu tất cả tài xế
+              </Typography>
+            </Stack>
+            <div>
+              <Button
+                startIcon={<PiPlus />}
+                variant="contained"
+                className=" text-white bg-[#0284c7]"
+                onClick={() => editDrawer.handleOpen()}
+              >
+                Thêm tài xế
+              </Button>
+            </div>
           </Stack>
-          <div>
-            <Button
-              startIcon={<PiPlus />}
-              variant="contained"
-              className=" text-white bg-[#0284c7]"
-              onClick={() => editDrawer.handleOpen()}
-            >
-              Thêm tài xế
-            </Button>
-          </div>
+          <CardTable
+            rows={pagedRows}
+            configs={driverInfoTableConfigs}
+            select={select}
+            pagination={pagination}
+            indexColumn
+            actions={
+              <Button
+                variant="contained"
+                color="error"
+                startIcon={<Delete />}
+                size="small"
+                disabled={select.selected.length == 0}
+                onClick={() => deleteDialog.handleOpen()}
+              >
+                Xoá ({select.selected.length})
+              </Button>
+            }
+            onClickEdit={(data: any) => editDrawer.handleOpen(data)}
+            onClickDelete={(data: any) => deleteDialog.handleOpen(data)}
+          >
+            <Stack gap={2} p={3} pb={2}>
+              <Typography variant="h6">
+                {"Danh sách tài xế: " + pagedRows.length}
+              </Typography>
+              <CustomFilter
+                configs={driverInfoFilterConfigs}
+                filter={filter}
+                onChange={setFilter}
+              />
+            </Stack>
+          </CardTable>
         </Stack>
-        <CardTable
-          rows={pagedRows}
-          configs={driverInfoTableConfigs}
-          select={select}
-          pagination={pagination}
-          indexColumn
-          actions={
-            <Button
-              variant="contained"
-              color="error"
-              startIcon={<Delete />}
-              size="small"
-              disabled={select.selected.length == 0}
-              onClick={() => deleteDialog.handleOpen()}
-            >
-              Xoá ({select.selected.length})
-            </Button>
-          }
-          onClickEdit={(data: any) => editDrawer.handleOpen(data)}
-          onClickDelete={(data: any) => deleteDialog.handleOpen(data)}
-        >
-          <Stack gap={2} p={3} pb={2}>
-            <Typography variant="h6">
-              {"Danh sách tài xế: " + pagedRows.length}
-            </Typography>
-            <CustomFilter
-              configs={driverInfoFilterConfigs}
-              filter={filter}
-              onChange={setFilter}
-            />
-          </Stack>
-        </CardTable>
-      </Stack>
+      </div>
+
       <DriverInfoEditDrawer
         driver={editDrawer.data}
         open={editDrawer.open}

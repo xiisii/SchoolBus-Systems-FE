@@ -15,8 +15,8 @@ const PasswordInput = ({
     <input
       type={showPassword ? "text" : "password"}
       placeholder="Nhập mật khẩu tại đây ..."
-      className="input input-bordered w-[388px] pl-3 pr-10 placeholder:w-[334px] placeholder:h-[20px] focus:placeholder:w-[334px] 
-      focus:placeholder:h-[20px]"
+      className="input input-bordered w-full pl-3 pr-10 placeholder:w-[334px] placeholder:h-[20px] focus:placeholder:w-[334px] 
+      focus:placeholder:h-[20px] px-3"
       onChange={onChange}
       value={value}
     />

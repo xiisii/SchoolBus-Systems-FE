@@ -20,7 +20,7 @@ const HeaderSection = () => {
   };
 
   return (
-    <div className="flex items-center justify-between px-4 pb-4 w-screen bg-[#fffae4]">
+    <div className="flex items-center justify-between px-4 pb-4 w-screen md:w-full lg:w-screen bg-[#fffae4]">
       <div className="flex-shrink-0">
         <Image
           src={LogoHCMUTE}
