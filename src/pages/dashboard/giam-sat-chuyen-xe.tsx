@@ -29,6 +29,7 @@ import "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/images/marker-shadow.png";
 import Map from "src/components/LeafMap/MapComponent";
 import NoSSRWrapper from "src/hocs/no-ssr-wrapper";
+import OpenLayerMap from "src/components/OpenLayerMap";
 const Page: PageType = () => {
   const editDrawer = useDrawer<BusInfoDetail>();
   const [filter, setFilter] = useState<Partial<BusInfoFilter>>({});
@@ -293,7 +294,7 @@ const Page: PageType = () => {
           />
           <div style={{ flex: isMobile ? 0.5 : 0.5 }}>
             <NoSSRWrapper>
-              <Map />
+              <OpenLayerMap />
             </NoSSRWrapper>
           </div>
         </Stack>
