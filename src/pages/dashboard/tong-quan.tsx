@@ -6,15 +6,16 @@ import { Layout as DashboardLayout } from "src/layouts/dashboard";
 import type { Page as PageType } from "src/types/page";
 import { Loader } from "@googlemaps/js-api-loader";
 import { Zoom } from "@mui/material";
-import BackgroundDashboard from "../../../public/image/Background_Dashboard.svg";
+import BackgroundDashboard from "../../../public/image/SchoolBus_Systems.png";
 import { Grid } from "@mui/material";
 import Image from "next/image";
 import StudentInfo from "../../../public/image/Student_Info.png";
 import LogoHCMUTE from "public/image/logo-hcmute.svg";
+
 const Page: PageType = () => {
   return (
     <div className="w-auto md:h-[1600px] lg:h-screen  h-screen pb-2 overflow-y-auto">
-      <Grid container spacing={2}>
+      <Grid>
         {/* Hàng 1 */}
         <Grid container item xs={12}>
           {/* Cột 1 */}
@@ -22,11 +23,6 @@ const Page: PageType = () => {
             <div className="rounded-lg overflow-hidden  h-full">
               <div className="bg-white p-6">
                 <div className="relative flex flex-col items-center justify-center h-auto bg-white">
-                  {/* Border */}
-                  {/* <div className="absolute inset-0 border-4 border-black -z-10" />
-                    <div className="absolute inset-0 border border-black m-6" />
-                    <div className="absolute inset-0 border border-black m-10" /> */}
-
                   <div className="text-center">
                     <h1 className="text-xs font-bold">
                       BỘ GIÁO DỤC VÀ ĐÀO TẠO
@@ -36,7 +32,7 @@ const Page: PageType = () => {
                     </h1>
                     <h1 className="text-xs font-bold">KHOA ĐIỆN - ĐIỆN TỬ</h1>
                     <h1 className="text-xs font-bold">
-                      NGÀNH HỆ THỐNG NHÚNG VÀ IOT
+                      BỘ MÔN KỸ THUẬT MÁY TÍNH - VIỄN THÔNG
                     </h1>
                   </div>
 
@@ -44,29 +40,27 @@ const Page: PageType = () => {
                     <Image
                       src={LogoHCMUTE}
                       alt="HCMUTE Logo"
-                      width={60}
-                      height={60}
+                      width={80}
+                      height={80}
                     />
                   </div>
 
-                  <div className="text-center mt-4">
-                    <h2 className="text-2xl font-bold">ĐỒ ÁN TỐT NGHIỆP</h2>
+                  <div className="text-center mt">
+                    <h2 className="text-x font-bold">ĐỒ ÁN TỐT NGHIỆP</h2>
 
-                    <h3 className="mt-4 text-xl font-bold">
-                      THIẾT KẾ HỆ THỐNG GIÁM SÁT HỌC SINH <br />
-                      TRÊN XE ĐƯA ĐÓN
+                    <h3 className="mt-1 text-xl font-bold">
+                    XÂY DỰNG HỆ THỐNG HỖ TRỢ GIÁM SÁT<br />
+                    HỌC SINH TRÊN XE ĐƯA ĐÓN ỨNG DỤNG AWS
                     </h3>
                   </div>
                   <br />
-                  <br />
-                  <table className="mt-1">
+                  <table className="text-right mt-1">
                     <tbody>
                       <tr>
                         <td className="text-left font-semibold text-xs">
                           GVHD:&nbsp;&nbsp;&nbsp; ThS. TRƯƠNG QUANG PHÚC
                         </td>
                       </tr>
-
                       <tr>
                         <td className="text-left font-semibold text-xs">
                           SVTH:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NGUYỄN ĐẶNG MAI THY
@@ -80,19 +74,17 @@ const Page: PageType = () => {
                     </tbody>
                   </table>
                 </div>
-                {/* Your content */}
               </div>
             </div>
           </Grid>
           {/* Cột 2 */}
           <Grid item xs={12} sm={6}>
-            <div className=" overflow-hidden ">
-              <div className="bg-white ">
-                {/* Your content */}
+            <div className=" overflow-hidden">
+              <div className="bg-white">
                 <Image
                   src={BackgroundDashboard}
                   alt="Image 1"
-                  className="w-auto h-auto"
+                  className="w-auto"
                 />{" "}
               </div>
             </div>

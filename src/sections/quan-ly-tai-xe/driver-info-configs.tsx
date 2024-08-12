@@ -8,31 +8,18 @@ const driverInfoTableConfigs: CardTableConfig<
   DriverInfoDetail["id"],
   DriverInfoDetail
 >[] = [
-  // {
-  //   key: "id",
-  //   headerLabel: "ID",
-  //   type: "string",
-  // },
   {
     key: "name",
     headerLabel: "Tên",
     type: "string",
   },
-
-  // {
-  //   key: "role",
-  //   headerIcon: <PiGitForkBold size={24} />,
-  //   headerLabel: "Nhóm quyền",
-  //   type: "string",
-  //   // renderCell: (cellData) => cellData.permissions[0]?.name || "--",
-  // },
   {
     key: "phone",
     headerLabel: "Số điện thoại",
     type: "string",
   },
   {
-    key: "car",
+    key: "bus",
     headerLabel: "Chuyến xe",
     type: "string",
   },

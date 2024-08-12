@@ -24,6 +24,7 @@ const Page: PageType = () => {
   const handleSignIn = async () => {
     try {
       if (username == "admin" && password == "123") {
+        console.log("Đăng nhập thành công");
         router.replace(paths.dashboard.index);
       } else {
         await signIn(username, password);
@@ -111,18 +112,6 @@ const Page: PageType = () => {
               Đăng nhập
             </button>
           </form>
-          {/* <div className="flex items-center gap-0">
-            <button
-              className="btn bg-none border-none  px-4 pt-1 pb-1 max-w-max h-[24px] text-xs	"
-              onClick={() => handleSignUp()}
-            >
-              Đăng ký tài khoản
-            </button>
-            <span>/</span>
-            <button className="btn bg-none border-none  px-4 pt-1 pb-1 max-w-max  h-[24px] text-xs	">
-              Quên mật khẩu
-            </button>
-          </div> */}
         </div>
       </div>
     </div>

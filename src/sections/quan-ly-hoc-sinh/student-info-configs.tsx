@@ -8,11 +8,6 @@ const studentInfoTableConfigs: CardTableConfig<
   StudentInfoDetail["id"],
   StudentInfoDetail
 >[] = [
-  // {
-  //   key: "id",
-  //   headerLabel: "ID",
-  //   type: "string",
-  // },
   {
     key: "name",
     headerLabel: "Tên",
@@ -23,16 +18,14 @@ const studentInfoTableConfigs: CardTableConfig<
     headerLabel: "Chuyến xe",
     type: "string",
   },
-  // {
-  //   key: "role",
-  //   headerIcon: <PiGitForkBold size={24} />,
-  //   headerLabel: "Nhóm quyền",
-  //   type: "string",
-  //   // renderCell: (cellData) => cellData.permissions[0]?.name || "--",
-  // },
   {
     key: "locate",
     headerLabel: "Vị trí",
+    type: "string",
+  },
+  {
+    key: "status",
+    headerLabel: "Trạng thái chuyến xe",
     type: "string",
   },
 ];

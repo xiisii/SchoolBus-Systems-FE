@@ -11,13 +11,14 @@ export interface StudentInfo {
 export interface StudentInfoDetail extends StudentInfo {}
 
 export const studentInfoSchema = yup.object().shape({
+  id: yup.string().required("Vui lòng nhập studentid"),
   name: yup.string().required("Vui lòng nhập name"),
   locate: yup.string().required("Vui lòng nhập vị trí (LAT_LNG)"),
-  status: yup.string().required("Vui lòng nhập status"),
+  bus: yup.string().required("Vui lòng nhập chuyến xe"),
 });
 
 export const initialStudentInfo: StudentInfoDetail = {
-  id: "0",
+  id: "",
   locate: "",
   status: "",
   name: "",

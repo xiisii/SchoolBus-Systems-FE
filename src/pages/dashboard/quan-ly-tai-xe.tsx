@@ -37,56 +37,26 @@ const Page: PageType = () => {
         id: "0001",
         name: "Phung Duc Hai",
         phone: "0123456789",
-        car: "1",
+        bus: "1",
         status: "Hoạt động",
       },
       {
         id: "0002",
         name: "Dinh Van Tung",
         phone: "0987654321",
-        car: "3",
+        bus: "3",
         status: "Không hoạt động",
       },
       {
         id: "0003",
         name: "Hoang Nhat Minh",
         phone: "0365789456",
-        car: "2",
+        bus: "2",
         status: "Không hoạt động",
       },
     ]);
   }, []);
-  // const sampleDriverInfo: DriverInfoDetail[] = [
-  //   // Thay đổi từ sampleStudentInfo thành sampleDriverInfo
-  //   {
-  //     id: "0001",
-  //     name: "Phung Duc Hai",
-  //     phone: "0123456789",
-  //     car: "1",
-  //     status: "Hoạt động",
-  //   },
-  //   {
-  //     id: "0002",
-  //     name: "Dinh Van Tung",
-  //     phone: "0987654321",
-  //     car: "3",
-  //     status: "Không hoạt động",
-  //   },
-  //   {
-  //     id: "0003",
-  //     name: "Hoang Nhat Minh",
-  //     phone: "0365789456",
-  //     car: "2",
-  //     status: "Không hoạt động",
-  //   },
-  // ];
-  // const sampleDriverInfo = useMemo(
-  //   // Bỏ comment khi sử dụng dữ liệu từ API
-  //   () =>
-  //     applyFilter(getDriverInfoApi.data || [], filter, driverInfoFilterConfigs),
-  //   [filter, getDriverInfoApi.data]
-  // );
-  // const driverInfo = useMemo(() => sampleDriverInfo, []); // Sử dụng dữ liệu mẫu
+
   const driverInfoFilterConfigs = useMemo(
     () => getDriverInfoFilterConfigs(sampleDriverInfo),
     [sampleDriverInfo]
@@ -115,6 +85,19 @@ const Page: PageType = () => {
     );
     setSampleDriverInfo(updatedSampleDriverInfo);
   };
+
+  const handleAddDriver = (newDriver: DriverInfoDetail) => {
+    console.log("handleAddStudent Call Function");
+    setSampleDriverInfo([newDriver, ...sampleDriverInfo]);
+  };
+
+  const handleUpdateDriver = (updatedDriver: DriverInfoDetail) => {
+    const updatedSampleDriverInfo = sampleDriverInfo.map((driver) =>
+      driver.id === updatedDriver.id ? updatedDriver : driver
+    );
+    setSampleDriverInfo(updatedSampleDriverInfo);
+  };
+
   return (
     <>
       <div className=" md:h-screen lg:h-screen h-screen">
@@ -176,6 +159,9 @@ const Page: PageType = () => {
         driver={editDrawer.data}
         open={editDrawer.open}
         onClose={editDrawer.handleClose}
+        onAddDriver={handleAddDriver}
+        onUpdateDriver={handleUpdateDriver} // Pass the update handler
+        sampleDriverInfo={sampleDriverInfo}
       />
       <TitleConfirmRemoveDialog
         open={deleteDialog.open}

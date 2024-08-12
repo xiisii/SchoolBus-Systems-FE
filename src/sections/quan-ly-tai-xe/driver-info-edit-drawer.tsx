@@ -1,47 +1,67 @@
-import { Grid, TextField, Stack, Typography } from "@mui/material";
+import { Grid, TextField, Stack, Typography, MenuItem, } from "@mui/material";
 import { useFormik } from "formik";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
+import AutocompleteTextField from "src/components/autocomplete-textfield";
 import CustomDrawer from "src/components/custom-drawer";
 import { useDriverInfoContext } from "src/contexts/driver-info/driver-info-context"; // Thay đổi từ useUsersContext thành useDriverInfoContext
+import useFunction from "src/hooks/use-function";
 import {
   DriverInfoDetail,
   initialDriverInfo,
   driverInfoSchema,
 } from "src/types/driver-info"; // Thay đổi từ UserDetail, initialUser, userSchema thành DriverInfoDetail, initialDriverInfo, driverInfoSchema
+import { v4 as uuidv4 } from "uuid";
 
 export const DriverInfoEditDrawer = ({
   open,
   onClose,
   driver,
+  onAddDriver,
+  onUpdateDriver,
+  sampleDriverInfo,
 }: {
   open: boolean;
   onClose: () => void;
   driver?: DriverInfoDetail;
+  onAddDriver: (student: DriverInfoDetail) => void;
+  onUpdateDriver: (student: DriverInfoDetail) => void;
+  sampleDriverInfo: DriverInfoDetail[]; 
 }) => {
   const { updateDriverInfo, createDriverInfo, getDriverInfoApi } =
     useDriverInfoContext(); // Thay đổi từ updateUser thành updateDriverInfo, từ createUser thành createDriverInfo
 
+  const [statusValue, setStatusValue] = useState<string>("");
+  
   const handleSubmit = useCallback(
     async (values: DriverInfoDetail) => {
       try {
         if (driver) {
-          await updateDriverInfo(values); // Thay đổi từ updateUser thành updateDriverInfo
+          onUpdateDriver(values);
         } else {
-          await createDriverInfo(values); // Thay đổi từ createUser thành createDriverInfo
+          const newDriver = { ...values, id: uuidv4() };
+          onAddDriver(newDriver); 
         }
         onClose();
       } catch (error) {
         console.error("Error:", error);
       }
     },
-    [driver, createDriverInfo, updateDriverInfo, onClose]
+    [driver, createDriverInfo, updateDriverInfo, onClose, onAddDriver]
   );
 
+  const handleSubmitHelper = useFunction(handleSubmit, {
+    successMessage: (driver ? "Sửa" : "Thêm") + " tài xế thành công!",
+  });
+
   const formik = useFormik({
-    initialValues: driver || initialDriverInfo, // Thay đổi từ initialUser thành initialDriverInfo
+    initialValues: initialDriverInfo, // Thay đổi từ initialUser thành initialDriverInfo
     validationSchema: driverInfoSchema, // Thay đổi từ userSchema thành driverInfoSchema
-    onSubmit: async (values) => {
-      await handleSubmit(values);
+    onSubmit: async (values, { resetForm }) => {
+      const { error } = await handleSubmitHelper.call(values);
+      if (!error) {
+        onClose();
+        resetForm();
+      }
     },
   });
   useEffect(() => {
@@ -54,18 +74,23 @@ export const DriverInfoEditDrawer = ({
   }, [open]);
 
   useEffect(() => {
+    const driverExists = sampleDriverInfo.some((s) => s.id === driver?.id);
     if (driver?.id && open) {
       formik.setValues(driver);
     }
+    if (!driver && !driverExists && open) {
+      formik.setValues(initialDriverInfo);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [driver?.id, open]);
-  // useEffect(() => {
-  //   if (driver && open) {
-  //     formik.setValues(driver);
-  //   } else {
-  //     formik.setValues(initialDriverInfo); // Thay đổi từ initialUser thành initialDriverInfo
-  //   }
-  // }, [driver, open, formik]);
+ 
+  const uniqueBuses = Array.from(
+    new Set(sampleDriverInfo.map((driver) => driver.bus))
+  );
+
+  const handleStatus = (event: any) => {
+    setStatusValue(event);
+  };
 
   return (
     <CustomDrawer
@@ -114,28 +139,32 @@ export const DriverInfoEditDrawer = ({
             <Grid item xs={12}>
               <TextField
                 fullWidth
-                id="car"
-                name="car"
-                label="Chuyến xe chạy"
-                placeholder="Nhập thông tin chuyến xe"
-                value={formik.values.car}
+                id="bus"
+                name="bus"
+                label="Chuyến xe"
+                placeholder="Nhập chuyến xe của tài xế"
+                value={formik.values.bus}
                 onChange={formik.handleChange}
-                error={formik.touched.car && !!formik.errors.car}
-                helperText={formik.touched.car && formik.errors.car}
+                error={formik.touched.bus && !!formik.errors.bus}
+                helperText={formik.touched.bus && formik.errors.bus}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 fullWidth
+                select
                 id="status"
                 name="status"
                 label="Trạng thái"
-                placeholder="Nhập trạng thái của tài xế"
                 value={formik.values.status}
-                onChange={formik.handleChange}
-                error={formik.touched.status && !!formik.errors.status}
-                helperText={formik.touched.status && formik.errors.status}
-              />
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleStatus(e.target.value);
+                }}
+              >
+                <MenuItem value={"Hoạt động"}>Hoạt động</MenuItem>
+                <MenuItem value={"Không hoạt động"}>Không hoạt động</MenuItem>
+              </TextField>
             </Grid>
           </Grid>
         </form>

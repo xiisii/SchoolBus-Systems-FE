@@ -23,6 +23,17 @@ import { Delete } from "@mui/icons-material";
 import { StudentInfoEditDrawer } from "src/sections/quan-ly-hoc-sinh/student-info-edit-drawer";
 import getStudentInfoFilterConfigs from "src/sections/quan-ly-hoc-sinh/student-info-filter";
 
+import axios from "axios";
+import {
+  generateUploadURLForEmployee,
+  generateAuthURLForStudent,
+} from "C:/Users/hvthy/Desktop/school-transportation-service-fe/src/aws/url.js";
+
+import {
+  putImageToEmployee,
+} from "C:/Users/hvthy/Desktop/school-transportation-service-fe/src/aws/index.js";
+
+
 const Page: PageType = () => {
   const editDrawer = useDrawer<StudentInfoDetail>();
   const [filter, setFilter] = useState<Partial<StudentInfoFilter>>({});
@@ -70,54 +81,6 @@ const Page: PageType = () => {
       },
     ]);
   }, []);
-  // const sampleStudentInfo: StudentInfoDetail[] = [
-  //   {
-  //     id: "0001",
-  //     bus: "1",
-  //     locate: "10.952648_106.816997",
-  //     name: "Nguyen Dang Mai Thy",
-  //     status: "Có mặt trên xe",
-  //   },
-  //   {
-  //     id: "0002",
-  //     bus: "1",
-  //     locate: "10.855654_106.631087",
-  //     name: "Bui Thi Thanh Ngan",
-  //     status: "Chưa lên xe",
-  //   },
-  //   {
-  //     id: "0003",
-  //     bus: "1",
-  //     locate: "10.850570_106.772055",
-  //     name: "Nguyen Quoc Viet",
-  //     status: "Đã xuống trạm",
-  //   },
-  //   {
-  //     id: "0004",
-  //     bus: "2",
-  //     locate: "10.840788_106.808897",
-  //     name: "Huynh Thien Nhan",
-  //     status: "Chưa lên xe",
-  //   },
-  //   {
-  //     id: "0005",
-  //     bus: "2",
-  //     locate: "10.770358_106.679110",
-  //     name: "Tran Ninh Hoang",
-  //     status: "Có mặt trên xe",
-  //   },
-  //   // Thêm dữ liệu mẫu khác nếu cần
-  // ];
-  // const studentInfo = useMemo(
-  //   () =>
-  //     applyFilter(
-  //       getStudentInfoApi.data || [],
-  //       filter,
-  //       studentInfoFilterConfigs
-  //     ),
-  //   [filter, getStudentInfoApi.data]
-  // );
-  // const studentInfo = useMemo(() => sampleStudentInfo, []);
 
   const studentInfoFilterConfigs = useMemo(
     () => getStudentInfoFilterConfigs(sampleStudentInfo),
@@ -147,6 +110,19 @@ const Page: PageType = () => {
     );
     setSampleStudentInfo(updatedSampleStudentInfo);
   };
+  
+  const handleAddStudent = (newStudent: StudentInfoDetail) => {
+    console.log("handleAddStudent Call Function");
+    setSampleStudentInfo([newStudent, ...sampleStudentInfo]);
+  };
+
+  const handleUpdateStudent = (updatedStudent: StudentInfoDetail) => {
+    const updatedSampleStudentInfo = sampleStudentInfo.map((student) =>
+      student.id === updatedStudent.id ? updatedStudent : student
+    );
+    setSampleStudentInfo(updatedSampleStudentInfo);
+  };
+
   return (
     <>
       <div className="h-full md:h-[1100px] lg:h-full">
@@ -206,6 +182,9 @@ const Page: PageType = () => {
           student={editDrawer.data}
           open={editDrawer.open}
           onClose={editDrawer.handleClose}
+          onAddStudent={handleAddStudent}
+          onUpdateStudent={handleUpdateStudent} // Pass the update handler
+          sampleStudentInfo={sampleStudentInfo}
         />
         <TitleConfirmRemoveDialog
           open={deleteDialog.open}

@@ -21,10 +21,7 @@ import { ToastContainer } from "react-toastify";
 
 const Page: PageType = () => {
   const router = useRouter();
-  // const notifyWarning = () => {
-  //   // console.log("Vào warning notify");
-  //   toast.warn("Bạn cần tải ảnh lên");
-  // };
+
   const handleGoBack = () => {
     console.log("Quay lại");
     router.replace(paths.index);

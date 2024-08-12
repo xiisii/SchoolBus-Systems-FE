@@ -57,7 +57,7 @@ const AutocompleteTextField: React.FC<Props> = ({
 
   useEffect(() => {
     if (document.activeElement != inputRef.current) {
-      console.log("document.activeElement", document.activeElement);
+      // console.log("document.activeElement", document.activeElement);
       setKey(new Date().getTime());
     }
   }, [value]);
